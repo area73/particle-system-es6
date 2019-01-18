@@ -32,6 +32,7 @@ export default class Vector {
   getAngleDegrees() {
     return this.getAngle() * 180 / Math.PI;
   }
+
   jitter(jitterAmount) {
     return new Vector(
       this.x + this.x * jitterAmount * Math.random(),
