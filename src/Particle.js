@@ -1,4 +1,4 @@
-import Vector from './Vector';
+import Vector from './Vector.js';
 
 let _size = 2;
 let _color = [66,167,222,255];
@@ -38,7 +38,7 @@ export default class Particle {
   submitToFields(fields) {
     let totalAccelerationX = 0;
     let totalAccelerationY = 0;
-    fields.forEach(function (field) {
+    fields.forEach( (field) => {
       let vectorX = field.position.x - this.position.x;
       let vectorY = field.position.y - this.position.y;
       let force = field.mass / Math.pow((vectorX*vectorX+field.mass/2+vectorY*vectorY+field.mass/2),1.5);

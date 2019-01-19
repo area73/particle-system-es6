@@ -1,8 +1,8 @@
-import Particle from './Particle';
-import Vector from './Vector';
+import Particle from './Particle.js';
+import Vector from './Vector.js';
 
-let _drawColor  = "#999";
-let _drawColor2 = "#000";
+let _drawColor  = "#91ff8c";
+let _drawColor2 = "#081608";
 let _jitter     = 0.05;
 
 export default class Emitter {

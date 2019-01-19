@@ -1,4 +1,14 @@
 export default class Vector {
+
+  static fromAngle(angle, magnitude) {
+    return new Vector(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
+  };
+
+  static fromString(string) {
+    let parts = string.split(',');
+    return new Vector(parseFloat(parts[0]),parseFloat(parts[1]));
+  };
+
   constructor(x,y) {
     this.x = x;
     this.y = y;
