@@ -2,9 +2,8 @@ const _singletonEnforncer = Symbol('private');
 let _instance;
 
 export default class EventHandler extends EventTarget {
-
   static getInstance() {
-    return _instance ? _instance : new EventHandler(_singletonEnforncer);
+    return _instance || new EventHandler(_singletonEnforncer);
   }
 
   static throwSingletonError() {
@@ -14,10 +13,9 @@ export default class EventHandler extends EventTarget {
     `);
   }
 
-  constructor (enfonrcer) {
-    (enfonrcer !== _singletonEnforncer) && EventHandler.throwSingletonError();
+  constructor(enfonrcer) {
+    enfonrcer !== _singletonEnforncer && EventHandler.throwSingletonError();
     super();
     _instance = this;
-    console.log("EventHandler created");
   }
 }

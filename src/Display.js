@@ -1,8 +1,7 @@
-import {PSEvent} from './PSEvent.js';
-
+import { PSEvent } from './PSEvent.js';
 
 export default class Display {
-  constructor(canvas,eventHandler) {
+  constructor(canvas, eventHandler) {
     this.canvas = canvas;
     this.context = undefined;
     this.numFrames = 0;
@@ -10,14 +9,16 @@ export default class Display {
     this.scale = 1;
     this.eventHandler = eventHandler;
   }
+
   init() {
-    this.context = this.canvas.getContext("2d");
+    this.context = this.canvas.getContext('2d');
     this.context.scale(this.scale, this.scale);
     this.width = this.canvas.width / this.scale;
     this.height = this.canvas.height / this.scale;
     this.eventBuilder();
     this.main();
   }
+
   eventBuilder() {
     this.newFrameEv = new Event(PSEvent.newFrame);
     this.beforeUpdateEv = new Event(PSEvent.beforeUpdate);
@@ -27,10 +28,13 @@ export default class Display {
     this.drawEv = new Event(PSEvent.draw);
     this.afterDrawEv = new Event(PSEvent.afterDraw);
   }
+
   main() {
     this.nextFrame();
-    (this.numFrames < this.maxRenderingFrames) && requestAnimationFrame(this.main.bind(this));
+    const execute = this.numFrames < this.maxRenderingFrames;
+    execute && requestAnimationFrame(this.main.bind(this));
   }
+
   nextFrame() {
     this.clear();
     this.eventHandler.dispatchEvent(this.newFrameEv);
@@ -49,17 +53,20 @@ export default class Display {
     this.context.closePath();
     this.context.fill();
   }
+
   fillStyle(fill) {
-    this.context.fillStyle = fill
+    this.context.fillStyle = fill;
   }
 
   tick() {
-    this.numFrames++;
+    this.numFrames += 1;
   }
+
   clear() {
     this.context.clearRect(0, 0, this.width, this.height);
   }
-  start() { this.paused = false; }
+
+  start() {
+    this.paused = false;
+  }
 }
-
-
