@@ -1,8 +1,3 @@
-/**
- * Field is the field of attraction (positive or negative) that particles will
- * be influenced. It is a gravitational mass
- */
-
 import Vector from './Vector.js';
 
 let _drawColor = '#d4a8a1';
@@ -26,15 +21,9 @@ export default class Field {
     _drawColor2 = color;
   }
 
-  static fromString(string) {
-    var parts = string.substr(1).split(':');
-    var field = new Field(Vector.fromString(parts.shift()),parseInt(parts.shift(),10));
-    return field;
-  };
-
   constructor (point, mass) {
     this.position   = point;
-    this.size       = 15;
+    this.size       = 85;
     this.mass       = 0;
     this.drawColor  = '#b00';
     this.setMass(mass);
@@ -45,15 +34,5 @@ export default class Field {
     this.drawColor = mass < 0 ? "#f99" : "#9f9";
     return this;
   };
-  moveTo(point) {
-    this.position = point;
-  };
 
-  toString() {
-    var coreAttributes = [
-      this.position.toString(),
-      this.mass
-    ];
-    return 'F' + coreAttributes.join(':');
-  };
 }

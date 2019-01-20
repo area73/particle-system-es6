@@ -1,5 +1,3 @@
-
-
 const _singletonEnforncer = Symbol('private');
 let _instance;
 
