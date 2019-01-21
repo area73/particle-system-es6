@@ -32,7 +32,7 @@ export default class Display {
   main() {
     this.nextFrame();
     const execute = this.numFrames < this.maxRenderingFrames;
-    execute && requestAnimationFrame(this.main.bind(this));
+    execute && requestAnimationFrame(() => this.main());
   }
 
   nextFrame() {
