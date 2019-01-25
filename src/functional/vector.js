@@ -1,5 +1,18 @@
 // TODO::  MOVE TO UTILS
-const compose = (f, g) => x => f(g(x));
+export const compose = (f, g) => x => f(g(x));
+export const prop = propName => obj => obj[propName];
+
+export const curry = f => a => b => f(a, b);
+export const uncurry = f => (a, b) => f(a)(b);
+export const papply = (f, a) => b => f(a, b);
+
+
+// -----------------------
+
+
+
+
+
 
 export const vector = (a, b) => ({ x: a, y: b });
 
@@ -20,3 +33,20 @@ export const radToDeg = compose(
   reduceDeg,
   toDeg,
 );
+
+const add = a => b => a + b;
+const propX = prop('x');
+const propY = prop('y');
+
+export const addVectors = (vectorA, vectorB) =>
+  vector(
+    add(propX(vectorA))(propX(vectorB)),
+    add(propY(vectorA))(propY(vectorB)),
+  );
+
+
+export const addVectors2 = vectorA => vectorB =>
+  vector(
+    add(propX(vectorA))(propX(vectorB)),
+    add(propY(vectorA))(propY(vectorB)),
+  );

@@ -1,28 +1,37 @@
-import Vector from './vector.js';
+import { addVectors } from './vector';
 
-const _size = 2;
-const _color = [66, 167, 222, 255];
+export const particle = (
+  position = {x:Math.random()*1000, y:Math.random()*1000},
+  velocity = {x:Math.random()*10, y:Math.random()*10},
+  acceleration = { x: 0, y: 0 },
+  color = [66, 167, 222, 255],
+  size = 2,
+) => ({
+  position,
+  velocity,
+  acceleration,
+  color,
+  size,
+});
+
+// move :: a -> a
+export const moveParticle = part => {
+  const { position, velocity, acceleration } = part;
+  // const {0:pos, 1:vel , 2:acc } = evaluate(position,velocity,acceleration)(part);
+  const newVelocity = addVectors(velocity, acceleration);
+  const newPosition = addVectors(position, newVelocity);
+  const updatedKeys = {
+    velocity: newVelocity,
+    position: newPosition,
+  };
+  return Object.assign(part, updatedKeys);
+};
+
+
+const calculateForce = (mass,vector) => mass / ((vector.x ** 2 + vector.y ** 2 + mass) ** 1.5)
+
 
 export default class Particle {
-  static get color() {
-    return _color;
-  }
-
-  static get size() {
-    return _size;
-  }
-
-  static calculateForce(field, vectorX, vectorY) {
-    const { mass } = field;
-    const calc = vectorX ** 2 + vectorY ** 2 + mass;
-    return mass / calc ** 1.5;
-  }
-
-  constructor(point, velocity) {
-    this.position = point;
-    this.velocity = velocity;
-    this.acceleration = new Vector(0, 0);
-  }
 
   submitToFields(fields) {
     let totalAccelerationX = 0;
@@ -35,12 +44,5 @@ export default class Particle {
       totalAccelerationY += vectorY * force;
     });
     this.acceleration = new Vector(totalAccelerationX, totalAccelerationY);
-  }
-
-  move() {
-    this.velocity.x += this.acceleration.x;
-    this.velocity.y += this.acceleration.y;
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
   }
 }
