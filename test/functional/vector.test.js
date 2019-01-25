@@ -4,7 +4,7 @@ import {
   cartesianToPolar,
   copy,
   fromAngle,
-  radToDeg,
+  radToDeg, addVectors,
 } from '../../src/functional/vector';
 
 test('get a vector', () => {
@@ -61,3 +61,13 @@ test('radians to Degrees', () => {
   const deg5 = radToDeg(Math.PI * 4);
   expect(deg5).toBe(0);
 });
+
+
+test('add 2 vectors', () => {
+
+  const a = vector(10,20);
+  const b = vector(10,20);
+
+  expect(addVectors(a,b)).toEqual({x:20,y:40});
+
+})
