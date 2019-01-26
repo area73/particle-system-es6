@@ -1,10 +1,11 @@
 import {
   vector,
   hypotenuse,
-  cartesianToPolar,
+  polarAng,
   copy,
   fromAngle,
-  radToDeg, addVectors,
+  radToDeg,
+  addVectors,
 } from '../../src/functional/vector';
 
 test('get a vector', () => {
@@ -23,18 +24,18 @@ test('get a hypotenuse (edge case)', () => {
 });
 
 test('cartesianToPolar', () => {
-  const polarAng = cartesianToPolar(10, 20);
-  expect(polarAng).toBe(1.1071487177940904);
+  const ang = polarAng(10, 20);
+  expect(ang).toBe(1.1071487177940904);
 });
 
 test('cartesianToPolar (edge)', () => {
-  const polarAng = cartesianToPolar(0, 20);
-  expect(polarAng).toBe(1.5707963267948966);
+  const ang = cartesianToPolar(0, 20);
+  expect(ang).toBe(1.5707963267948966);
 });
 
 test('cartesianToPolar (edge)', () => {
-  const polarAng = cartesianToPolar(20, 0);
-  expect(polarAng).toBe(0);
+  const ang = cartesianToPolar(20, 0);
+  expect(ang).toBe(0);
 });
 
 test('copy', () => {
@@ -62,12 +63,9 @@ test('radians to Degrees', () => {
   expect(deg5).toBe(0);
 });
 
-
 test('add 2 vectors', () => {
+  const a = vector(10, 20);
+  const b = vector(10, 20);
 
-  const a = vector(10,20);
-  const b = vector(10,20);
-
-  expect(addVectors(a,b)).toEqual({x:20,y:40});
-
-})
+  expect(addVectors(a, b)).toEqual({ x: 20, y: 40 });
+});

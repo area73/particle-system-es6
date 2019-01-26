@@ -6,21 +6,16 @@ export const curry = f => a => b => f(a, b);
 export const uncurry = f => (a, b) => f(a)(b);
 export const papply = (f, a) => b => f(a, b);
 
-
 // -----------------------
-
-
-
-
-
+// -----------------------
 
 export const vector = (a, b) => ({ x: a, y: b });
 
 export const hypotenuse = (x, y) => Math.sqrt(x ** 2 + y ** 2);
-export const getMagnitude = hypotenuse;
+export const getMagnitude = vect => hypotenuse(vect.x, vect.y);
 
-export const cartesianToPolar = (x, y) => Math.atan2(y, x);
-export const getAngle = cartesianToPolar;
+export const polarAng = vect => Math.atan2(vect.y, vect.x);
+export const getAngle = polarAng;
 
 export const copy = v => vector(v.x, v.y);
 
@@ -43,7 +38,6 @@ export const addVectors = (vectorA, vectorB) =>
     add(propX(vectorA))(propX(vectorB)),
     add(propY(vectorA))(propY(vectorB)),
   );
-
 
 export const addVectors2 = vectorA => vectorB =>
   vector(
