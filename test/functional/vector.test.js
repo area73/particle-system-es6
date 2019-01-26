@@ -24,17 +24,17 @@ test('get a hypotenuse (edge case)', () => {
 });
 
 test('cartesianToPolar', () => {
-  const ang = polarAng(10, 20);
+  const ang = polarAng({x:10, y:20});
   expect(ang).toBe(1.1071487177940904);
 });
 
 test('cartesianToPolar (edge)', () => {
-  const ang = cartesianToPolar(0, 20);
+  const ang = polarAng({ x: 0, y: 20 });
   expect(ang).toBe(1.5707963267948966);
 });
 
 test('cartesianToPolar (edge)', () => {
-  const ang = cartesianToPolar(20, 0);
+  const ang = polarAng({ x: 20, y: 0 });
   expect(ang).toBe(0);
 });
 

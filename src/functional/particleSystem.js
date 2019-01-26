@@ -3,7 +3,7 @@ import {
   circleGradiantDraw,
   display,
   clearCtx,
-} from './Display.js';
+} from './display.js';
 import { emitter } from './emitter.js';
 import { particle, moveParticle, attachParticleToRef } from './particle.js';
 import { field } from './field.js';
