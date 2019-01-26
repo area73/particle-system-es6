@@ -1,6 +1,5 @@
 import { fromAngle, getMagnitude, polarAng } from './vector.js';
 
-
 export const emitter = ({
   position = { x: 0, y: 0 },
   velocity = { x: 1, y: 1 },

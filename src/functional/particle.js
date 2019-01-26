@@ -1,4 +1,10 @@
-import {addVectors, fromAngle, getMagnitude, polarAng, vector} from './vector.js';
+import {
+  addVectors,
+  fromAngle,
+  getMagnitude,
+  polarAng,
+  vector,
+} from './vector.js';
 
 export const particle = ({
   position = { x: Math.random() * 1000, y: Math.random() * 1000 },
@@ -17,7 +23,7 @@ export const particle = ({
 export const calculateForce = (mass, vector) =>
   mass / (vector.x ** 2 + vector.y ** 2 + mass) ** 1.5;
 
-const disturbanceAcceleration = (part,fields) => {
+const disturbanceAcceleration = (part, fields) => {
   let totalAccelerationX = 0;
   let totalAccelerationY = 0;
   fields.forEach(field => {
@@ -32,13 +38,16 @@ const disturbanceAcceleration = (part,fields) => {
 
 // move :: a -> a
 export const moveParticle = (part, fields) => {
-  const { position, velocity } = part;
-  const acceleration = disturbanceAcceleration(part,fields);
+  const { position, velocity, acceleration } = part;
+  const disturbAcceleration = fields
+    ? disturbanceAcceleration(part, fields)
+    : acceleration;
   const newVelocity = addVectors(velocity, acceleration);
   const newPosition = addVectors(position, newVelocity);
   const updatedKeys = {
     velocity: newVelocity,
     position: newPosition,
+    acceleration: disturbAcceleration,
   };
   return Object.assign(part, updatedKeys);
 };
