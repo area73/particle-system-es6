@@ -10,7 +10,7 @@ export const particle = ({
   position = { x: Math.random() * 1000, y: Math.random() * 1000 },
   velocity = { x: Math.random() * 10, y: Math.random() * 10 },
   acceleration = { x: 0, y: 0 },
-  color = [166, 237, 180, 1],
+  color = [66, 167, 222, 1],
   size = 2,
 } = {}) => ({
   position,
@@ -55,13 +55,12 @@ export const moveParticle = (part, fields) => {
 export const attachParticleToRef = (particleFn, refObj) => {
   const particleOverride = {};
   const part = particleFn();
-
   particleOverride.position = refObj.position;
   particleOverride.velocity = fromAngle(
     polarAng(refObj.velocity) +
       refObj.spread -
       Math.random() * refObj.spread * 2,
-    getMagnitude(part.velocity),
+    getMagnitude(refObj.velocity),
   );
   return { ...part, ...particleOverride };
 };
