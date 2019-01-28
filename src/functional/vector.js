@@ -1,13 +1,5 @@
-// TODO::  MOVE TO UTILS
-export const compose = (f, g) => x => f(g(x));
-export const prop = propName => obj => obj[propName];
-
-export const curry = f => a => b => f(a, b);
-export const uncurry = f => (a, b) => f(a)(b);
-export const papply = (f, a) => b => f(a, b);
-
-// -----------------------
-// -----------------------
+import prop from '../ramda/prop.js';
+import pipe from '../ramda/pipe.js';
 
 export const vector = (a, b) => ({ x: a, y: b });
 
@@ -24,9 +16,9 @@ export const fromAngle = (angle, magnitude) =>
 
 const reduceDeg = deg => deg % 360;
 const toDeg = rad => rad * (180 / Math.PI);
-export const radToDeg = compose(
-  reduceDeg,
+export const radToDeg = pipe(
   toDeg,
+  reduceDeg,
 );
 
 const add = a => b => a + b;
