@@ -5,6 +5,11 @@ export const display = canvas => ({
   ctx: canvas.getContext('2d'),
 });
 
+export const squaredDraw = ({ ctx, obj }) => {
+  ctx.fillStyle = toRGBA(obj.color);
+  ctx.fillRect(obj.position.x, obj.position.y, obj.size, obj.size);
+};
+
 export const circleDraw = ({ ctx, obj, gradient = null }) => {
   ctx.fillStyle = gradient || toRGBA(obj.color) || toRGBA(obj.color[0]);
   ctx.beginPath();
@@ -24,7 +29,7 @@ export const circleGradiantDraw = (ctx, obj) => {
   );
   gradient.addColorStop(0, toRGBA(obj.color[0]));
   gradient.addColorStop(1, toRGBA(obj.color[1] || obj.color[0]));
-  circleDraw({ ctx, obj , gradient},);
+  circleDraw({ ctx, obj, gradient });
 };
 
 export const clearCtx = disp =>

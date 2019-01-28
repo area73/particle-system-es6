@@ -3,6 +3,7 @@ import {
   circleGradiantDraw,
   display,
   clearCtx,
+  squaredDraw,
 } from './display.js';
 import { emitter } from './emitter.js';
 import { particle, moveParticle, attachParticleToRef } from './particle.js';
@@ -18,9 +19,22 @@ const disp = display(canvas);
 
 // Emitters
 // --------
-const emitterA = emitter({ position: { x: 100, y: 100 } });
-const emitterB = emitter({ position: { x: 400, y: 200 }, spread: Math.PI * 2 });
+const emitterA = emitter({
+  position: { x: 200, y: 200 },
+  velocity: { x: 2, y: 0 },
+});
+const emitterB = emitter({
+  position: { x: 800, y: 200 },
+  velocity: { x: -2, y: 0 },
+});
 const emitters = [emitterA, emitterB];
+
+// Fields
+// ------
+const fields = [];
+const fielRepel = field({ position: { x: 500, y: 200 }, mass: -140 });
+// const fielRepel2 = field({ position: { x: 200, y: 300 }, mass: 600 });
+fields.push(fielRepel);
 
 // Particles
 // ---------
@@ -28,20 +42,14 @@ let particles = [];
 const addParticles = () => {
   emitters.forEach(ref => {
     let subArr = [];
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < ref.frequency; i += 1) {
       const newParticle = attachParticleToRef(particle, ref);
       subArr = [...subArr, newParticle];
     }
+
     particles = [...particles, ...subArr];
   });
 };
-
-// Fields
-// ------
-const fields = [];
-const fielRepel = field({ position: { x: 400, y: 400 }, mass: -1600 });
-const fielRepel2 = field({ position: { x: 200, y: 300 }, mass: 600 });
-fields.push(fielRepel, fielRepel2);
 
 // paint
 // -----
@@ -52,7 +60,7 @@ const drawEmitters = () =>
   emitters.forEach(emttr => circleGradiantDraw(disp.ctx, emttr));
 
 const drawParticles = () =>
-  particles.forEach(prtcl => circleDraw({ ctx: disp.ctx, obj: prtcl }));
+  particles.forEach(prtcl => squaredDraw({ ctx: disp.ctx, obj: prtcl }));
 
 // move
 // ----
@@ -85,7 +93,7 @@ const loop = cont => {
   drawFields();
   drawEmitters();
   drawParticles();
-
+  100 % 0 === 0 && console.log(particles.length);
   cont && requestAnimationFrame(() => loop(cont - 1));
 };
 
