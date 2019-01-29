@@ -1,9 +1,9 @@
-# PArticle System ES6 Object Oriented Vs Functional PAaadigm
+# Particle System:  ES6 Object Oriented Vs Functional Paradigm
 
 This is a particle system, with no dependencies pure vanilla Javascript.
 
 There are right now 3 branches:
-  `version-0` is an Object Oriented ES6 clases & modules version. It is the minimum version 
+  `version-0` is an Object Oriented ES6 classes & modules version. It is the minimum version 
     to work with .
     `version-0-functional` , same version but without classes and in a functional approach, not 
     optimised
@@ -41,19 +41,19 @@ This is a very simple particle system with 3 actors.
 
 **Particle:** the main object of this system that will be affected by forces.
 
-**Emmisor:** Entity that will spell particles at diferent speed and angle
+**Emmisor:** Entity that will spell particles at different speed and angle
 
 **Filed:** A gravity field. This gravity can be positive (it will attract particles), or negative
  (it will repel particles)
  
-There are other pices to consider , the particle system itself were we set our scenario and a 
+There are other peaces to consider , the particle system itself were we set our scenario and a 
 display system 
 
 ### <a name="patterns">Design Patterns</a>
 This application contains a variety of design patterns to make the code readable and maintainable.
 
 ## <a name="Screenshots">Screenshots</a>
-![Alt text](/area73/particle-system-es6/assets/screen01.png?raw=true "Particle System")
+![Alt text](/assets/screen01.png?raw=true "Particle System")
 
 ## <a name="Getting-Started">Getting Started</a>
 There is no need for a build or any package installation :scream_cat:
