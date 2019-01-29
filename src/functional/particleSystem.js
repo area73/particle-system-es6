@@ -20,11 +20,11 @@ const disp = display(canvas);
 // Emitters
 // --------
 const emitterA = emitter({
-  position: { x: 200, y: 200 },
+  position: { x: 200, y: 500 },
   velocity: { x: 2, y: 0 },
 });
 const emitterB = emitter({
-  position: { x: 800, y: 200 },
+  position: { x: 800, y: 500 },
   velocity: { x: -2, y: 0 },
 });
 const emitters = [emitterA, emitterB];
@@ -32,7 +32,7 @@ const emitters = [emitterA, emitterB];
 // Fields
 // ------
 const fields = [];
-const fielRepel = field({ position: { x: 500, y: 200 }, mass: -140 });
+const fielRepel = field({ position: { x: 500, y: 500 }, mass: -140 });
 // const fielRepel2 = field({ position: { x: 200, y: 300 }, mass: 600 });
 fields.push(fielRepel);
 

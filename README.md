@@ -1,15 +1,25 @@
-# PROJECT NAME AND DESCRIPTION
+# PArticle System ES6 Object Oriented Vs Functional PAaadigm
 
-Short introduction or overview that explains what the project is. 
-This description should match descriptions added for package managers (Gemspec, package.json, etc.)
-You can also add some badges/states next to Project Name, e.g,
-Like:
+This is a particle system, with no dependencies pure vanilla Javascript.
 
-[![Build Status](https://travis-ci.org/Polymer/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/Polymer/polymer-starter-kit)
+There are right now 3 branches:
+  `version-0` is an Object Oriented ES6 clases & modules version. It is the minimum version 
+    to work with .
+    `version-0-functional` , same version but without classes and in a functional approach, not 
+    optimised
+    `version-1-functional`, more functional development this is the only branch that has a 
+    dependence to  Ramda (a functional library), you can expect to find here free point programming,
+     currying, etc.  
+
+> ## 🛠 Status: On active development
+
+<!-- 
+[![Build Status](https://travis-ci.org/Polymer/polymer-starter-kit.svg?branch=master)]
+(https://travis-ci.org/Polymer/polymer-starter-kit)
+-->
 
 ## Index
-* [Features or Example](#features)
-  * [Project good practices](#good-practices)
+* [Features](#features)
 * [Screenshots](#Screenshots)
 * [Getting Started](#Getting-Started)
   * [Code scaffolding](#code-scaffolding)
@@ -29,12 +39,18 @@ Like:
 <hr>
 
 
-## <a name="features">Features or Example</a>
-Talk about motivation an features of your project
+## <a name="features">Features</a>
+This is a very simple particle system with 3 actors.
 
-### <a name="good-practices">Project good practices</a>
-Add any interesting thing that you may consider important to follow as a good
-practice for this project 
+**Particle:** the main object of this system that will be affected by forces.
+
+**Emmisor:** Entity that will spell particles at diferent speed and angle
+
+**Filed:** A gravity field. This gravity can be positive (it will attract particles), or negative
+ (it will repel particles)
+ 
+There are other pices to consider , the particle system itself were we set our scenario and a 
+display system 
 
 ## <a name="Screenshots">Screenshots</a>
 Screen shots of tje application, if any
