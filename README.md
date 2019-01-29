@@ -3,12 +3,16 @@
 This is a particle system, with no dependencies pure vanilla Javascript.
 
 There are right now 3 branches:
-  `version-0` is an Object Oriented ES6 classes & modules version. It is the minimum version 
-    to work with .
+
+    `version-0` is an Object Oriented ES6 classes & modules version. It is the minimum version 
+     to work with .
+    
     `version-0-functional` , same version but without classes and in a functional approach, not 
-    optimised
+     optimised
+    
     `version-1-functional`, more functional development this is the only branch that has a 
-    dependence to  Ramda (a functional library), you can expect to find here free point programming,
+     dependence to  Ramda (a functional library), you can expect to find here free point 
+     programming,
      currying, etc.  
 
 > ## 🛠 Status: On active development
