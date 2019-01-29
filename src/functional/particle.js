@@ -20,8 +20,20 @@ export const particle = ({
   size,
 });
 
-export const calculateForce = (mass, vector) =>
-  mass / (vector.x ** 2 + vector.y ** 2 + mass) ** 1.5;
+
+
+
+
+const square = x => x**2;
+
+export const calculateForce = (mass, vectr) => {
+  const a = mass / (square(vectr.x) + square(vectr.y) + mass) ** 1.5;
+  const b = mass / ((square(vectr.x) + square(vectr.y)) ** 2);
+  const c = - mass * 6.67** -11 / Math.sqrt(square(vectr.x) + square(vectr.y));
+  //console.log(a,c)
+  return a;
+}
+
 
 const disturbanceAcceleration = (part, fields) => {
   let totalAccelerationX = 0;
