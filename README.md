@@ -1,3 +1,8 @@
+
+
+> ## 🛠 Status: On active development
+
+
 # Particle System:  ES6 Object Oriented Vs Functional Paradigm
 
 This is a particle system, with no dependencies pure vanilla Javascript.
@@ -14,8 +19,6 @@ There are right now 3 branches:
    dependence to  Ramda (a functional library), you can expect to find here free point 
    programming,
    currying, etc.  
-
-> ## 🛠 Status: On active development
 
 <!-- 
 [![Build Status](https://travis-ci.org/Polymer/polymer-starter-kit.svg?branch=master)]
