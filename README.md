@@ -82,8 +82,8 @@ None , hurrah !! :metal: :metal:
 
 ### <a name="start-server">Start the development server</a>
 
-... but (there is always a but), you will need to run the index.html in a server becuase trying 
-to execute index.html from file directory wont work since ES6 modules are sandboed to be executed
+... but (there is always a but), you will need to run the index.html in a server because trying 
+to execute index.html from file directory won't work since ES6 modules are sandbox to be executed
  in a server and not from file system.
  
  If you don't have any server you can run from the root of the project the following command:
@@ -93,17 +93,17 @@ to execute index.html from file directory wont work since ES6 modules are sandbo
 ## <a name="Running-the-tests">Running the tests</a>
 I'm using Jest to do the testing. You can do:
 
-`npm tun test`
+`npm run test`
 
 ## <a name="Built-With">Built With</a>
 Good old plain Javascript  
 
 ## <a name="Authors">Author</a>
 Work by:
-<a mailto="rerades@siete3.com">Rodrigo Erades</a>
+<a href="mailto:rerades@siete3.com">Rodrigo Erades</a>
 
 ## <a name="License">License</a>
-All Rights Reserved. Copyright 
+MIT Licence
 
 ## <a name="Acknowledgments">Acknowledgments</a>
 This Particle system is base on this article and repo:
