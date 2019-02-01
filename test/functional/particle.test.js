@@ -1,4 +1,4 @@
-import { vector } from '../../src/functional/vector';
+import { vector } from '../../src/functional/Vector';
 import {
   calculateForce,
   moveParticle,
