@@ -6,9 +6,9 @@ import {
   squaredDraw,
 } from './display.js';
 import { emitter } from './emitter.js';
-import { particle, moveParticle, attachParticleToRef } from './particle.js';
-import { field } from './field.js';
-import Vector from '../oo/Vector.js';
+import { Particle } from './particle.js';
+import { Field } from './Field.js';
+
 
 // Display
 // -------
@@ -20,11 +20,11 @@ const disp = display(canvas);
 // Emitters
 // --------
 const emitterA = emitter({
-  position: { x: 200, y: 500 },
+  position: { x: 200, y: 200 },
   velocity: { x: 2, y: 0 },
 });
 const emitterB = emitter({
-  position: { x: 800, y: 500 },
+  position: { x: 800, y: 200 },
   velocity: { x: -2, y: 0 },
 });
 const emitters = [emitterA, emitterB];
@@ -32,7 +32,7 @@ const emitters = [emitterA, emitterB];
 // Fields
 // ------
 const fields = [];
-const fielRepel = field({ position: { x: 500, y: 500 }, mass: -140 });
+const fielRepel = Field({ position: { x: 350, y: 200 }, mass: -140 });
 // const fielRepel2 = field({ position: { x: 200, y: 300 }, mass: 600 });
 fields.push(fielRepel);
 
@@ -43,7 +43,7 @@ const addParticles = () => {
   emitters.forEach(ref => {
     let subArr = [];
     for (let i = 0; i < ref.frequency; i += 1) {
-      const newParticle = attachParticleToRef(particle, ref);
+      const newParticle = Particle.attachToField(Particle, ref);
       subArr = [...subArr, newParticle];
     }
 
@@ -65,7 +65,7 @@ const drawParticles = () =>
 // move
 // ----
 const moveParticles = flds =>
-  particles.forEach(part => moveParticle(part, flds));
+  particles.forEach(part => Particle.move(part, flds));
 
 // Clean
 // -----

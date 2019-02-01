@@ -1,12 +1,9 @@
-import {
-  addVectors,
-  fromAngle,
-  getMagnitude,
-  polarAng,
-  vector,
-} from './vector.js';
+import * as R from '../ramda';
 
-export const particle = ({
+import { Field } from './Field.js';
+import { Vector } from './Vector.js';
+
+export const Particle = ({
   position = { x: Math.random() * 1000, y: Math.random() * 1000 },
   velocity = { x: Math.random() * 10, y: Math.random() * 10 },
   acceleration = { x: 0, y: 0 },
@@ -20,42 +17,39 @@ export const particle = ({
   size,
 });
 
+const position = item => R.prop('position', item) || 0;
+const posX = item => R.prop('x', position(item)) || 0;
+const posY = item => R.prop('y', position(item)) || 0;
+const propMass = item => R.prop('mass', item) || 0;
 
+const calculateForce = ({ mass, position: { x, y } } = Field()) =>
+  mass / (x ** 2 + y ** 2 + mass) ** 1.5;
 
+const difference = a => b => a - b;
 
-
-const square = x => x**2;
-
-export const calculateForce = (mass, vectr) => {
-  const a = mass / (square(vectr.x) + square(vectr.y) + mass) ** 1.5;
-  const b = mass / ((square(vectr.x) + square(vectr.y)) ** 2);
-  const c = - mass * 6.67** -11 / Math.sqrt(square(vectr.x) + square(vectr.y));
-  //console.log(a,c)
-  return a;
-}
-
-
-const disturbanceAcceleration = (part, fields) => {
-  let totalAccelerationX = 0;
-  let totalAccelerationY = 0;
-  fields.forEach(field => {
-    const vectorX = field.position.x - part.position.x;
-    const vectorY = field.position.y - part.position.y;
-    const force = calculateForce(field.mass, { x: vectorX, y: vectorY });
-    totalAccelerationX += vectorX * force;
-    totalAccelerationY += vectorY * force;
-  });
-  return vector(totalAccelerationX, totalAccelerationY);
+Particle.disturbanceAcceleration = (origin, fields) => {
+  const partX = posX(origin);
+  const partY = posY(origin);
+  return fields.reduce((acc, curr) => {
+    const fieldX = difference(posX(curr))(partX);
+    const fieldY = difference(posY(curr))(partY);
+    const force = calculateForce({
+      mass: propMass(curr),
+      position: Vector(fieldX, fieldY),
+    });
+    const newVector = Vector(fieldX * force, fieldY * force);
+    return Vector.add(acc, newVector);
+  }, Vector(0, 0));
 };
 
 // move :: a -> a
-export const moveParticle = (part, fields) => {
+Particle.move = (part, fields) => {
   const { position, velocity, acceleration } = part;
   const disturbAcceleration = fields
-    ? disturbanceAcceleration(part, fields)
+    ? Particle.disturbanceAcceleration(part, fields)
     : acceleration;
-  const newVelocity = addVectors(velocity, acceleration);
-  const newPosition = addVectors(position, newVelocity);
+  const newVelocity = Vector.add(velocity, acceleration);
+  const newPosition = Vector.add(position, newVelocity);
   const updatedKeys = {
     velocity: newVelocity,
     position: newPosition,
@@ -64,15 +58,15 @@ export const moveParticle = (part, fields) => {
   return Object.assign(part, updatedKeys);
 };
 
-export const attachParticleToRef = (particleFn, refObj) => {
+Particle.attachToField = (particleFn, refObj) => {
   const particleOverride = {};
   const part = particleFn();
   particleOverride.position = refObj.position;
-  particleOverride.velocity = fromAngle(
-    polarAng(refObj.velocity) +
+  particleOverride.velocity = Vector.fromAngle(
+    Vector.polar(refObj.velocity) +
       refObj.spread -
       Math.random() * refObj.spread * 2,
-    getMagnitude(refObj.velocity),
+    Vector.magnitude(refObj.velocity),
   );
   return { ...part, ...particleOverride };
 };

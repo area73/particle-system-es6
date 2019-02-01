@@ -6,7 +6,7 @@ import {
   fromAngle,
   radToDeg,
   addVectors,
-} from '../../src/functional/vector';
+} from '../../src/functional/Vector';
 
 test('get a vector', () => {
   const newVector = vector(10, 20);
