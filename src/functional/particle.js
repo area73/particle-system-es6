@@ -1,5 +1,3 @@
-import * as R from '../ramda';
-
 import { Field } from './Field.js';
 import { Vector } from './Vector.js';
 
@@ -17,45 +15,30 @@ export const Particle = ({
   size,
 });
 
-const position = item => R.prop('position', item) || 0;
-const posX = item => R.prop('x', position(item)) || 0;
-const posY = item => R.prop('y', position(item)) || 0;
-const propMass = item => R.prop('mass', item) || 0;
-
 const calculateForce = ({ mass, position: { x, y } } = Field()) =>
   mass / (x ** 2 + y ** 2 + mass) ** 1.5;
 
-const difference = a => b => a - b;
-
-Particle.disturbanceAcceleration = (origin, fields) => {
-  const partX = posX(origin);
-  const partY = posY(origin);
-  return fields.reduce((acc, curr) => {
-    const fieldX = difference(posX(curr))(partX);
-    const fieldY = difference(posY(curr))(partY);
-    const force = calculateForce({
-      mass: propMass(curr),
-      position: Vector(fieldX, fieldY),
-    });
-    const newVector = Vector(fieldX * force, fieldY * force);
-    return Vector.add(acc, newVector);
-  }, Vector(0, 0));
-};
+Particle.disturbanceAcceleration = (origin, fields = []) =>
+  fields.reduce((acc, { mass, position }) => {
+    const newPos = Vector.difference(position, origin.position);
+    const force = calculateForce(Field({ mass, position: newPos }));
+    return Vector.add(acc, Vector.scale(newPos, force));
+  }, Vector());
 
 // move :: a -> a
-Particle.move = (part, fields) => {
-  const { position, velocity, acceleration } = part;
+Particle.move = (origin, fields) => {
+  const { position, velocity, acceleration } = origin;
   const disturbAcceleration = fields
-    ? Particle.disturbanceAcceleration(part, fields)
+    ? Particle.disturbanceAcceleration(origin, fields)
     : acceleration;
-  const newVelocity = Vector.add(velocity, acceleration);
+  const newVelocity = Vector.add(velocity, disturbAcceleration);
   const newPosition = Vector.add(position, newVelocity);
   const updatedKeys = {
     velocity: newVelocity,
     position: newPosition,
     acceleration: disturbAcceleration,
   };
-  return Object.assign(part, updatedKeys);
+  return { ...origin, ...updatedKeys };
 };
 
 Particle.attachToField = (particleFn, refObj) => {
