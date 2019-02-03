@@ -1,6 +1,6 @@
 export const toRGBA = arr => `rgba(${[...arr].join()})`;
 
-export const display = canvas => ({
+export const Display = canvas => ({
   canvas,
   ctx: canvas.getContext('2d'),
 });

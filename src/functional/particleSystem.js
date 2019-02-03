@@ -1,100 +1,98 @@
 import {
-  circleDraw,
   circleGradiantDraw,
-  display,
+  Display,
   clearCtx,
   squaredDraw,
 } from './display.js';
 import { emitter } from './emitter.js';
 import { Particle } from './particle.js';
 import { Field } from './Field.js';
-
+import * as R from '../ramda';
+import { Vector } from './Vector.js';
 
 // Display
 // -------
 const canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const disp = display(canvas);
+const disp = Display(canvas);
 
 // Emitters
 // --------
 const emitterA = emitter({
-  position: { x: 200, y: 200 },
-  velocity: { x: 2, y: 0 },
+  position: Vector(200, 200),
+  velocity: Vector(2, 0),
 });
 const emitterB = emitter({
-  position: { x: 800, y: 200 },
-  velocity: { x: -2, y: 0 },
+  position: Vector(800, 200),
+  velocity: Vector(-2, 0),
 });
 const emitters = [emitterA, emitterB];
 
 // Fields
 // ------
-const fields = [];
-const fielRepel = Field({ position: { x: 350, y: 200 }, mass: -140 });
-// const fielRepel2 = field({ position: { x: 200, y: 300 }, mass: 600 });
-fields.push(fielRepel);
+const fielRepel = Field({ position: Vector(400, 200), mass: -140 });
+const fielRepel2 = Field({ position: Vector(500, 400), mass: 300 });
+const fields = [fielRepel, fielRepel2];
 
 // Particles
 // ---------
-let particles = [];
-const addParticles = () => {
-  emitters.forEach(ref => {
-    let subArr = [];
-    for (let i = 0; i < ref.frequency; i += 1) {
-      const newParticle = Particle.attachToField(Particle, ref);
-      subArr = [...subArr, newParticle];
-    }
-
-    particles = [...particles, ...subArr];
-  });
-};
+const addParticlesToEmitters = emtrs => particles =>
+  emtrs.reduce(
+    (acc, cur) => [
+      ...acc,
+      ...R.call(
+        R.times(() => Particle.attachToField(Particle, cur)),
+        cur.frequency,
+      ),
+    ],
+    particles,
+  );
 
 // paint
 // -----
 const drawFields = () =>
   fields.forEach(fld => circleGradiantDraw(disp.ctx, fld));
-
 const drawEmitters = () =>
   emitters.forEach(emttr => circleGradiantDraw(disp.ctx, emttr));
-
-const drawParticles = () =>
+const drawParticles = (particles = []) =>
   particles.forEach(prtcl => squaredDraw({ ctx: disp.ctx, obj: prtcl }));
-
 // move
 // ----
-const moveParticles = flds =>
-  particles.forEach(part => Particle.move(part, flds));
+const moveParticles = flds => particles =>
+  particles.map(part => Particle.move(part, flds));
 
 // Clean
 // -----
-const cleanParticles = (parts, boundry) =>
+const cleanParticles = (boundry = { x, y }) => (parts = []) =>
   parts.filter(
-    part =>
-      part.position.x < boundry.x &&
-      part.position.y < boundry.y &&
-      part.position.x > 0 &&
-      part.position.y > 0,
+    ({ position }) =>
+      position.x < boundry.x &&
+      position.y < boundry.y &&
+      position.x > 0 &&
+      position.y > 0,
   );
 
 // Loop
 // ------
-const loop = cont => {
+const requestFrame = cont => particles =>
+  // eslint-disable-next-line no-use-before-define
+  cont && requestAnimationFrame(() => loop(cont, particles));
+
+const boundry = disp => Vector(disp.canvas.width, disp.canvas.height);
+
+const loop = (cont, particles = []) => {
   // clear
   clearCtx(disp);
-  // clean particles outside of field
-  particles = cleanParticles(particles, { x: canvas.width, y: canvas.height });
-  // move
-  moveParticles(fields);
-  // add new
-  addParticles();
-  // draw
-  drawFields();
-  drawEmitters();
-  drawParticles();
-  100 % 0 === 0 && console.log(particles.length);
-  cont && requestAnimationFrame(() => loop(cont - 1));
+  R.pipe(
+    cleanParticles(boundry(disp)),
+    moveParticles(fields),
+    addParticlesToEmitters(emitters),
+    R.tap(drawFields),
+    R.tap(drawEmitters),
+    R.tap(drawParticles),
+    R.tap(requestFrame(cont - 1)),
+  )(particles);
 };
 
 loop(900);
