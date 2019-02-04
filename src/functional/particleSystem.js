@@ -1,19 +1,16 @@
-import { circleGradiantDraw, Display, squaredDraw } from './display.js';
+import { Display } from './display.js';
 import { emitter } from './emitter.js';
 import { Particle } from './particle.js';
 import { Field } from './Field.js';
-import * as R from '../ramda';
 import { Vector } from './Vector.js';
+import * as R from '../ramda';
 
 // Display
-// -------
 const canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const disp = Display(canvas);
-
 // Emitters
-// --------
 const emitters = [
   emitter({
     position: Vector(200, 200),
@@ -25,62 +22,42 @@ const emitters = [
   }),
 ];
 // Fields
-// ------
 const fields = [
   Field({ position: Vector(400, 200), mass: -140 }),
   Field({ position: Vector(500, 400), mass: 300 }),
 ];
-
 // Particles
-// ---------
 const addParticlesToEmitters = emtrs => particles =>
   emtrs.reduce(
     (acc, cur) => [
       ...acc,
-      ...R.call(
-        R.times(() => Particle.attachToField(Particle(), cur)),
-        cur.frequency,
-      ),
+      ...R.call(R.times(() => Particle.attachToEmitter(cur)), cur.frequency),
     ],
     particles,
   );
-
 // paint
-// -----
 const drawFields = (fields, disp) => () =>
-  fields.forEach(fld => circleGradiantDraw(disp.ctx, fld));
+  fields.forEach(fld => Display.circleGradiantDraw(disp, fld));
 const drawEmitters = (emitters, disp) => () =>
-  emitters.forEach(emttr => circleGradiantDraw(disp.ctx, emttr));
+  emitters.forEach(emttr => Display.circleGradiantDraw(disp, emttr));
 const drawParticles = disp => (particles = []) =>
-  particles.forEach(prtcl => squaredDraw({ ctx: disp.ctx, obj: prtcl }));
+  particles.forEach(prtcl => Display.squaredDraw({ disp, obj: prtcl }));
 // move
-// ----
 const moveParticles = flds => particles =>
   particles.map(part => Particle.move(part, flds));
-
 // Clean
-// -----
-const cleanParticles = (boundry = { x, y }) => (parts = []) =>
-  parts.filter(
-    ({ position }) =>
-      position.x < boundry.x &&
-      position.y < boundry.y &&
-      position.x > 0 &&
-      position.y > 0,
-  );
-
+const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
+  parts.filter(particle => Particle.isInBound(boundary, particle));
 // Loop
-// ------
 const requestFrame = cont => disp => fields => emitters => particles =>
   // eslint-disable-next-line no-use-before-define
   cont &&
   requestAnimationFrame(() => loop(cont, disp, fields, emitters, particles));
 
-const boundry = disp => Vector(disp.canvas.width, disp.canvas.height);
 const loop = (cont, disp, fields, emitters, particles = []) => {
   R.pipe(
     R.tap(Display.clearCtx(disp)),
-    cleanParticles(boundry(disp)),
+    removeUnboundParticles(Display.boundary(disp)),
     moveParticles(fields),
     addParticlesToEmitters(emitters),
     R.tap(drawFields(fields, disp)),
