@@ -41,9 +41,8 @@ Particle.move = (origin, fields) => {
   return { ...origin, ...updatedKeys };
 };
 
-Particle.attachToField = (particleFn, refObj) => {
+Particle.attachToField = (particle, refObj) => {
   const particleOverride = {};
-  const part = particleFn();
   particleOverride.position = refObj.position;
   particleOverride.velocity = Vector.fromAngle(
     Vector.polar(refObj.velocity) +
@@ -51,5 +50,5 @@ Particle.attachToField = (particleFn, refObj) => {
       Math.random() * refObj.spread * 2,
     Vector.magnitude(refObj.velocity),
   );
-  return { ...part, ...particleOverride };
+  return { ...particle, ...particleOverride };
 };
