@@ -41,8 +41,15 @@ Particle.move = (origin, fields) => {
   return { ...origin, ...updatedKeys };
 };
 
-Particle.attachToField = (particle, refObj) => {
+Particle.isInBound = (boundry, particle) =>
+  particle.position.x < boundry.x &&
+  particle.position.y < boundry.y &&
+  particle.position.x > 0 &&
+  particle.position.y > 0;
+
+Particle.attachToEmitter = refObj => {
   const particleOverride = {};
+  const particle = Particle();
   particleOverride.position = refObj.position;
   particleOverride.velocity = Vector.fromAngle(
     Vector.polar(refObj.velocity) +
