@@ -36,12 +36,12 @@ const addParticlesToEmitters = emtrs => particles =>
     particles,
   );
 // paint
-const drawFields = (fields, disp) => () =>
-  fields.forEach(fld => Display.circleGradiantDraw(disp, fld));
-const drawEmitters = (emitters, disp) => () =>
-  emitters.forEach(emttr => Display.circleGradiantDraw(disp, emttr));
-const drawParticles = disp => (particles = []) =>
-  particles.forEach(prtcl => Display.squaredDraw({ disp, obj: prtcl }));
+const drawFields = (flds, dspl) => () =>
+  flds.forEach(fld => Display.circleGradiantDraw(dspl, fld));
+const drawEmitters = (emttrs, dspl) => () =>
+  emttrs.forEach(emttr => Display.circleGradiantDraw(dspl, emttr));
+const drawParticles = dspl => (particles = []) =>
+  particles.forEach(prtcl => Display.squaredDraw({ disp: dspl, obj: prtcl }));
 // move
 const moveParticles = flds => particles =>
   particles.map(part => Particle.move(part, flds));
@@ -49,12 +49,11 @@ const moveParticles = flds => particles =>
 const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
   parts.filter(particle => Particle.isInBound(boundary, particle));
 // Loop
-const requestFrame = cont => disp => fields => emitters => particles =>
+const requestFrame = cont => dspl => flds => emttrs => prtcls =>
   // eslint-disable-next-line no-use-before-define
-  cont &&
-  requestAnimationFrame(() => loop(cont, disp, fields, emitters, particles));
+  cont && requestAnimationFrame(() => loop(cont, dspl, flds, emttrs, prtcls));
 
-const loop = (cont, disp, fields, emitters, particles = []) => {
+const loop = (cont, dspl, flds, emttrs, particles = []) => {
   R.pipe(
     R.tap(Display.clearCtx(disp)),
     removeUnboundParticles(Display.boundary(disp)),

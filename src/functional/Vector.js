@@ -1,5 +1,3 @@
-import * as R from '../ramda';
-
 export const Vector = (x = 0, y = 0) => ({ x, y });
 
 Vector.magnitude = (v = Vector()) => Math.sqrt(v.x ** 2 + v.y ** 2);
