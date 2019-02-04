@@ -5,6 +5,7 @@ module.exports = {
     browser: true,
   },
   rules: {
+    'no-restricted-globals': 'off',
     'no-unused-expressions': ['error', { allowTernary: true , allowShortCircuit:true }],
     'no-bitwise': ['error', { allow: ['~', '>>'] }],
     'implicit-arrow-linebreak': 'off',

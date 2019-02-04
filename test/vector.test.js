@@ -1,61 +1,62 @@
-import Vector from '../src/Vector';
-/*
-test('Instantiate a Vector class', () => {
-  const myVector = new Vector();
-  expect(myVector instanceof Vector).toBe(true)
+import { Vector } from '../src/Vector';
+
+test('get a vector', () => {
+  const newVector = Vector(10, 20);
+  expect(newVector).toEqual({ x: 10, y: 20 });
 });
 
-
-test('Pass atributes to constructor', () => {
-  const myVector = new Vector(10,20);
-  expect(myVector.x).toBe(10);
-  expect(myVector.y).toBe(20);
+test('get a magnitude', () => {
+  const magnitude = Vector.magnitude(Vector(7, 22));
+  expect(magnitude).toBe(23.08679276123039);
 });
 
-
-test('getMagnitude', () => {
-  const myVector = new Vector(10,20);
-  expect(myVector.getMagnitude()).toBe(22.360679774997898);
-
-});
-*/
-/*
-test('create a vectorTo', () => {
-  const myVector = new Vector(10,20);
-  // const vectorTo = myVector.vectorTo({x:5,y:30});
-  expect(vectorTo.x).toBe(-5);
-  expect(vectorTo.y).toBe(10);
-  // const vectorToAlt = myVector.vectorTo(new Vector(10,20));
-  expect(vectorToAlt.x).toBe(0);
-  expect(vectorToAlt.y).toBe(0);
-});
-*/
-/*
-test('check if a point is withinBounds', () => {
-  const myVector = new Vector(10,20);
-  expect(myVector.withinBounds({x:8,y:18},2)).toBe(true);
-  expect(myVector.withinBounds({x:5,y:18},2)).toBe(false);
+test('get a magnitude (edge case)', () => {
+  const magnitude = Vector.magnitude(Vector(0, 22));
+  expect(magnitude).toBe(22);
 });
 
-test('get vector\'s angles', () => {
-  const myVector1 = new Vector(10,20);
-  expect(myVector1.getAngle()).toBe(1.1071487177940904);
-  expect(myVector1.getAngleDegrees()).toBe(63.43494882292201);
-  const myVector2 = new Vector(-10,-20);
-  expect(myVector2.getAngle()).toBe(-2.0344439357957027);
-  expect(myVector2.getAngleDegrees()).toBe(-116.56505117707799);
-  const myVector3 = new Vector(-10,20);
-  expect(myVector3.getAngle()).toBe(2.0344439357957027);
-  expect(myVector3.getAngleDegrees()).toBe(116.56505117707799);
-  const myVector4 = new Vector(10,-20);
-  expect(myVector4.getAngle()).toBe(-1.1071487177940904);
-  expect(myVector4.getAngleDegrees()).toBe(-63.43494882292201);
-  const myVector5 = new Vector(10,0);
-  expect(myVector5.getAngle()).toBe(0);
-  expect(myVector5.getAngleDegrees()).toBe(0);
-  const myVector6 = new Vector(0,10);
-  expect(myVector6.getAngle()).toBe(1.5707963267948966);
-  expect(myVector6.getAngleDegrees()).toBe(90);
-
+test('get Polar angle of a vector', () => {
+  const ang = Vector.polar({ x: 10, y: 20 });
+  expect(ang).toBe(1.1071487177940904);
 });
-*/
+
+test('get Polar angle of a vector (edge)', () => {
+  const ang = Vector.polar({ x: 0, y: 20 });
+  expect(ang).toBe(1.5707963267948966);
+});
+
+test('get Polar angle of a vector (edge)', () => {
+  const ang = Vector.polar({ x: 20, y: 0 });
+  expect(ang).toBe(0);
+});
+
+test('copy a vector', () => {
+  const oldVector = Vector(10, 20);
+  const vectorDup = Vector.copy(oldVector);
+  expect(vectorDup).toEqual({ x: 10, y: 20 });
+  expect(vectorDup).not.toBe(oldVector);
+});
+
+test('add two vectors', () => {
+  const vectorA = Vector(10, 20);
+  const vectorB = Vector(5, 3);
+  const addition = Vector.add(vectorA, vectorB);
+  expect(addition).toEqual({ x: 15, y: 23 });
+});
+
+test('get vector from  angle and magnitude', () => {
+  const vectorDup = Vector.fromAngle(10, 20);
+  expect(vectorDup).toEqual({ x: -16.781430581529047, y: -10.880422217787395 });
+});
+
+test('scale a vector by a constant', () => {
+  const vectorScaled = Vector.scale(Vector(10, 20), 5);
+  expect(vectorScaled).toEqual({ x: 50, y: 100 });
+});
+
+test('substract vectors', () => {
+  const vectorA = Vector(10, 20);
+  const vectorB = Vector(5, 3);
+  const substraction = Vector.difference(vectorA, vectorB);
+  expect(substraction).toEqual({ x: 5, y: 17 });
+});
