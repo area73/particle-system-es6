@@ -15,8 +15,10 @@ export const Particle = ({
   size,
 });
 
-const calculateForce = ({ mass, position: { x, y } } = Field()) =>
-  mass / (x ** 2 + y ** 2 + mass) ** 1.5;
+const calculateForce = ({ mass, position } = Field()) => {
+  const force = mass / Vector.magnitude(position) ** 3;
+  return isFinite(force) ? force : 0;
+};
 
 Particle.disturbanceAcceleration = (origin, fields = []) =>
   fields.reduce((acc, { mass, position }) => {
@@ -41,9 +43,9 @@ Particle.move = (origin, fields) => {
   return { ...origin, ...updatedKeys };
 };
 
-Particle.isInBound = (boundry, particle) =>
-  particle.position.x < boundry.x &&
-  particle.position.y < boundry.y &&
+Particle.isInBound = (boundary, particle) =>
+  particle.position.x < boundary.x &&
+  particle.position.y < boundary.y &&
   particle.position.x > 0 &&
   particle.position.y > 0;
 
