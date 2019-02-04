@@ -3,7 +3,7 @@ import { emitter } from './emitter.js';
 import { Particle } from './particle.js';
 import { Field } from './Field.js';
 import { Vector } from './Vector.js';
-import * as R from '../ramda';
+import * as R from './ramda';
 
 // Display
 const canvas = document.getElementById('canvas');
@@ -23,8 +23,8 @@ const emitters = [
 ];
 // Fields
 const fields = [
-  Field({ position: Vector(400, 200), mass: -140 }),
-  Field({ position: Vector(500, 400), mass: 300 }),
+  Field({ position: Vector(400, 200), mass: -100 }),
+  Field({ position: Vector(500, 400), mass: 250 }),
 ];
 // Particles
 const addParticlesToEmitters = emtrs => particles =>

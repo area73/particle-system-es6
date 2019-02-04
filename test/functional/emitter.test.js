@@ -1,5 +1,5 @@
-import { emitter } from '../../src/functional/emitter';
-import { particle } from '../../src/functional/particle';
+import { emitter } from '../../src/emitter';
+import { particle } from '../../src/particle';
 
 test('get an emitter', () => {
   const newEmitter = emitter();
