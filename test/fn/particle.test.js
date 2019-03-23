@@ -1,6 +1,6 @@
-import { Vector } from '../src/Vector';
-import { Particle } from '../src/particle.js';
-import { Field } from '../src/Field.js';
+import { Vector } from '../../src/fn/Vector';
+import { Particle } from '../../src/fn/particle.js';
+import { Field } from '../../src/fn/Field.js';
 
 test('get a particle', () => {
   const newParticle = Particle({

@@ -1,4 +1,4 @@
-import { Vector } from '../src/Vector';
+import { Vector } from '../../src/fn/Vector';
 
 test('get a vector', () => {
   const newVector = Vector(10, 20);

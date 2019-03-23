@@ -19,6 +19,9 @@ There are right now 3 branches:
    dependence to  Ramda (a functional library), you can expect to find here free point 
    programming,
    currying, etc.  
+   
+   `talk/final`, `talk/stage-*` , functional and Object Oriented step by step for a talk 
+   @functionalJS group 
 
 <!-- 
 [![Build Status](https://travis-ci.org/Polymer/polymer-starter-kit.svg?branch=master)]
