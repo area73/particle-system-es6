@@ -3,7 +3,7 @@ import { emitter } from './emitter.js';
 import { Particle } from './particle.js';
 import { Field } from './Field.js';
 import { Vector } from './Vector.js';
-import * as R from './ramda';
+import * as R from '../../lib/ramda';
 
 // Display
 const canvas = document.getElementById('canvas');
