@@ -5,7 +5,7 @@ export default class Display {
     this.canvas = canvas;
     this.context = undefined;
     this.numFrames = 0;
-    this.maxRenderingFrames = 300;
+    this.maxRenderingFrames = 33300;
     this.scale = 1;
     this.eventHandler = eventHandler;
   }
