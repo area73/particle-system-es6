@@ -12,13 +12,15 @@ export default class Particle {
     return _size;
   }
 
+  // TODO :: we are only using the mas of the field. Do we need the field?
+  // TODO:: maybe refactoring this outside on a helper class
   static calculateForce(field, vectorX, vectorY) {
     const { mass } = field;
     const calc = vectorX ** 2 + vectorY ** 2 + mass;
-    return mass / calc ** 1.5;
+    return mass === 0 ? 0 : mass / calc ** 1.5;
   }
 
-  constructor(point, velocity) {
+  constructor(point = Vector(0, 0), velocity = Vector(0, 0)) {
     this.position = point;
     this.velocity = velocity;
     this.acceleration = new Vector(0, 0);
