@@ -1,3 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="0" failures="0" time="18.796">
+<testsuites name="jest tests" tests="19" failures="0" time="11.448">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:46" time="1.447" tests="11">
+    <testcase classname=" get a vector" name=" get a vector" time="0.011">
+    </testcase>
+    <testcase classname=" get a magnitude" name=" get a magnitude" time="0.002">
+    </testcase>
+    <testcase classname=" get a magnitude (edge case)" name=" get a magnitude (edge case)" time="0.001">
+    </testcase>
+    <testcase classname=" get Polar angle of a vector" name=" get Polar angle of a vector" time="0.002">
+    </testcase>
+    <testcase classname=" get Polar angle of a vector (edge)" name=" get Polar angle of a vector (edge)" time="0.002">
+    </testcase>
+    <testcase classname=" get Polar angle of a vector (edge)" name=" get Polar angle of a vector (edge)" time="0.001">
+    </testcase>
+    <testcase classname=" copy a vector" name=" copy a vector" time="0.003">
+    </testcase>
+    <testcase classname=" add two vectors" name=" add two vectors" time="0.002">
+    </testcase>
+    <testcase classname=" get vector from  angle and magnitude" name=" get vector from  angle and magnitude" time="0.001">
+    </testcase>
+    <testcase classname=" scale a vector by a constant" name=" scale a vector by a constant" time="0.002">
+    </testcase>
+    <testcase classname=" substract vectors" name=" substract vectors" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:46" time="1.456" tests="5">
+    <testcase classname=" get a particle" name=" get a particle" time="0.013">
+    </testcase>
+    <testcase classname=" calculate particle disturbance acceleration affected by other fields" name=" calculate particle disturbance acceleration affected by other fields" time="0.003">
+    </testcase>
+    <testcase classname=" calculate particle disturbance acceleration affected by other fields, edge case were no acceleration is been affected" name=" calculate particle disturbance acceleration affected by other fields, edge case were no acceleration is been affected" time="0.001">
+    </testcase>
+    <testcase classname=" move particle" name=" move particle" time="0.002">
+    </testcase>
+    <testcase classname=" particle is in bound" name=" particle is in bound" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:48" time="0.676" tests="2">
+    <testcase classname=" get an emitter" name=" get an emitter" time="0.005">
+    </testcase>
+    <testcase classname=" get an emitter with size = 50" name=" get an emitter with size = 50" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test EventHandler" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:46" time="2.217" tests="1">
+    <testcase classname="Test EventHandler It should not be directly instantiate with new operator" name="Test EventHandler It should not be directly instantiate with new operator" time="0.01">
+    </testcase>
+  </testsuite>
 </testsuites>
