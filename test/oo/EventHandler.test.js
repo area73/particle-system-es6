@@ -1,6 +1,6 @@
 import EventHandler from '../../src/oo/EventHandler.js';
 
-describe('Test EventHandler', () => {
+describe('OO :: Test EventHandler', () => {
   test('It should not be directly instantiate with new operator', () => {
     expect(() => new EventHandler()).toThrow(Error);
   });

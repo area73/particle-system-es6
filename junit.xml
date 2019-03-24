@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="19" failures="0" time="11.448">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:46" time="1.447" tests="11">
-    <testcase classname=" get a vector" name=" get a vector" time="0.011">
-    </testcase>
-    <testcase classname=" get a magnitude" name=" get a magnitude" time="0.002">
-    </testcase>
-    <testcase classname=" get a magnitude (edge case)" name=" get a magnitude (edge case)" time="0.001">
-    </testcase>
-    <testcase classname=" get Polar angle of a vector" name=" get Polar angle of a vector" time="0.002">
-    </testcase>
-    <testcase classname=" get Polar angle of a vector (edge)" name=" get Polar angle of a vector (edge)" time="0.002">
-    </testcase>
-    <testcase classname=" get Polar angle of a vector (edge)" name=" get Polar angle of a vector (edge)" time="0.001">
-    </testcase>
-    <testcase classname=" copy a vector" name=" copy a vector" time="0.003">
-    </testcase>
-    <testcase classname=" add two vectors" name=" add two vectors" time="0.002">
-    </testcase>
-    <testcase classname=" get vector from  angle and magnitude" name=" get vector from  angle and magnitude" time="0.001">
-    </testcase>
-    <testcase classname=" scale a vector by a constant" name=" scale a vector by a constant" time="0.002">
-    </testcase>
-    <testcase classname=" substract vectors" name=" substract vectors" time="0.001">
+<testsuites name="jest tests" tests="20" failures="1" time="15.736">
+  <testsuite name="OO :: Test EventHandler" errors="0" failures="0" skipped="0" timestamp="2019-03-24T19:03:42" time="1.404" tests="1">
+    <testcase classname="OO :: Test EventHandler It should not be directly instantiate with new operator" name="OO :: Test EventHandler It should not be directly instantiate with new operator" time="0.02">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:46" time="1.456" tests="5">
-    <testcase classname=" get a particle" name=" get a particle" time="0.013">
+  <testsuite name="λ :: Test Vector" errors="0" failures="0" skipped="0" timestamp="2019-03-24T19:03:42" time="1.557" tests="11">
+    <testcase classname="λ :: Test Vector get a vector" name="λ :: Test Vector get a vector" time="0.018">
+    </testcase>
+    <testcase classname="λ :: Test Vector get a magnitude" name="λ :: Test Vector get a magnitude" time="0.003">
+    </testcase>
+    <testcase classname="λ :: Test Vector get a magnitude (edge case)" name="λ :: Test Vector get a magnitude (edge case)" time="0.003">
+    </testcase>
+    <testcase classname="λ :: Test Vector get Polar angle of a vector" name="λ :: Test Vector get Polar angle of a vector" time="0.003">
+    </testcase>
+    <testcase classname="λ :: Test Vector get Polar angle of a vector (edge)" name="λ :: Test Vector get Polar angle of a vector (edge)" time="0.001">
+    </testcase>
+    <testcase classname="λ :: Test Vector get Polar angle of a vector (edge)" name="λ :: Test Vector get Polar angle of a vector (edge)" time="0.001">
+    </testcase>
+    <testcase classname="λ :: Test Vector copy a vector" name="λ :: Test Vector copy a vector" time="0.003">
+    </testcase>
+    <testcase classname="λ :: Test Vector add two vectors" name="λ :: Test Vector add two vectors" time="0.002">
+    </testcase>
+    <testcase classname="λ :: Test Vector get vector from  angle and magnitude" name="λ :: Test Vector get vector from  angle and magnitude" time="0.001">
+    </testcase>
+    <testcase classname="λ :: Test Vector scale a vector by a constant" name="λ :: Test Vector scale a vector by a constant" time="0.002">
+    </testcase>
+    <testcase classname="λ :: Test Vector substract vectors" name="λ :: Test Vector substract vectors" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T19:03:42" time="1.541" tests="5">
+    <testcase classname=" get a particle" name=" get a particle" time="0.015">
     </testcase>
     <testcase classname=" calculate particle disturbance acceleration affected by other fields" name=" calculate particle disturbance acceleration affected by other fields" time="0.003">
     </testcase>
@@ -33,17 +37,26 @@
     </testcase>
     <testcase classname=" move particle" name=" move particle" time="0.002">
     </testcase>
-    <testcase classname=" particle is in bound" name=" particle is in bound" time="0.001">
+    <testcase classname=" particle is in bound" name=" particle is in bound" time="0.004">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:48" time="0.676" tests="2">
-    <testcase classname=" get an emitter" name=" get an emitter" time="0.005">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-03-24T19:03:44" time="0.692" tests="2">
+    <testcase classname=" get an emitter" name=" get an emitter" time="0.008">
     </testcase>
     <testcase classname=" get an emitter with size = 50" name=" get an emitter with size = 50" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="Test EventHandler" errors="0" failures="0" skipped="0" timestamp="2019-03-24T18:55:46" time="2.217" tests="1">
-    <testcase classname="Test EventHandler It should not be directly instantiate with new operator" name="Test EventHandler It should not be directly instantiate with new operator" time="0.01">
+  <testsuite name="OO :: Test Vector" errors="0" failures="1" skipped="0" timestamp="2019-03-24T19:03:44" time="1.185" tests="1">
+    <testcase classname="OO :: Test Vector get a vector" name="OO :: Test Vector get a vector" time="0.003">
+      <failure>TypeError: _Vector.Vector is not a constructor
+    at Object.&lt;anonymous&gt; (/Users/rerades/Desktop/particle-system-es6/test/oo/Vector.test.js:5:15)
+    at Object.asyncJestTest (/Users/rerades/Desktop/particle-system-es6/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:102:37)
+    at resolve (/Users/rerades/Desktop/particle-system-es6/node_modules/jest-jasmine2/build/queueRunner.js:43:12)
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (/Users/rerades/Desktop/particle-system-es6/node_modules/jest-jasmine2/build/queueRunner.js:26:19)
+    at promise.then (/Users/rerades/Desktop/particle-system-es6/node_modules/jest-jasmine2/build/queueRunner.js:73:41)
+    at &lt;anonymous&gt;
+    at process._tickCallback (internal/process/next_tick.js:188:7)</failure>
     </testcase>
   </testsuite>
 </testsuites>

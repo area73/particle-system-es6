@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-server": "npx simple-server",
-    "test": "jest",
+    "test": "jest --watch --config=jest.config.js",
     "test-no-watch": "jest --config=jest.config.js",
     "eslint": "eslint \"src/**/*.js\"",
     "validate": "npm-run-all --parallel eslint test-no-watch",
