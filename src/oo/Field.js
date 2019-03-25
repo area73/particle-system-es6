@@ -34,12 +34,7 @@ export default class Field {
   }
 
   _setColorByMassValue(mass) {
-    if (mass < 0) {
-      this.backgroundColor = '#4287E000';
-      this.foregroundColor = '#13FF0580';
-    } else {
-      this.backgroundColor = '#ff000000';
-      this.foregroundColor = '#ffff0080';
-    }
+    this.backgroundColor = mass < 0 ? '#7FB7FF0A' : '#ff000000';
+    this.foregroundColor = mass < 0 ? '#13FF0560' : '#ffff0080';
   }
 }
