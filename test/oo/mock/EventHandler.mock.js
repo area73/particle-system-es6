@@ -1,3 +1,5 @@
+import { EventTarget } from 'event-target-shim';
+
 const _singletonEnforncer = Symbol('private');
 let _instance;
 
