@@ -5,6 +5,8 @@ export default class Field {
 
   _foregroundColor = '#ffff0080';
 
+  static foregroundColor;
+
   get backgroundColor() {
     return this._backgroundColor;
   }

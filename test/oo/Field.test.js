@@ -9,29 +9,27 @@ describe('OO :: Field', () => {
   test(' Given a point an a mass instantiate a Field Object', () => {
     expect(field).toBeObject();
   });
-  test('can access to object\'s position', () => {
+  test("can access to object's position", () => {
     expect(field.position).toBeInstanceOf(Vector);
   });
-  test('can access to object\'s size', () => {
+  test("can access to object's size", () => {
     expect(field.size).toBeNumber();
   });
-  test('can access to object\'s mass', () => {
+  test("can access to object's mass", () => {
     expect(field.mass).toBeNumber();
   });
-  test('get/set static method backgroundColor', () => {
-    const initialColor = Field.backgroundColor;
+  test('get/set  method backgroundColor', () => {
+    const initialColor = field.backgroundColor;
     expect(initialColor).toBeString();
     expect(initialColor).toStartWith('#');
-    const newColor = initialColor === '#000' ? '#FFF' : '#000';
-    Field.backgroundColor = newColor;
-    expect(initialColor).not.toBe(Field.backgroundColor);
+    field.backgroundColor = initialColor === '#000' ? '#FFF' : '#000';
+    expect(initialColor).not.toBe(field.backgroundColor);
   });
   test('get/set static method foregroundColor', () => {
-    const initialColor = Field.foregroundColor;
+    const initialColor = field.foregroundColor;
     expect(initialColor).toBeString();
     expect(initialColor).toStartWith('#');
-    const newColor = initialColor === '#000' ? '#FFF' : '#000';
-    Field.foregroundColor = newColor;
-    expect(initialColor).not.toBe(Field.foregroundColor);
+    field.foregroundColor = initialColor === '#000' ? '#FFF' : '#000';
+    expect(initialColor).not.toBe(field.foregroundColor);
   });
 });
