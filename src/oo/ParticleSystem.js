@@ -92,16 +92,14 @@ export default class ParticleSystem {
     const gradient = this.display.context.createRadialGradient(
       object.position.x,
       object.position.y,
-      object.size,
+      object.size / 2,
       object.position.x,
       object.position.y,
       0,
     );
-    gradient.addColorStop(0, object.drawColor || object.constructor.drawColor);
-    gradient.addColorStop(
-      1,
-      object.drawColor2 || object.constructor.drawColor2,
-    );
+    gradient.addColorStop(0, object.backgroundColor);
+    gradient.addColorStop(1, object.foregroundColor);
+
     this.display.fillStyle(gradient);
     this.display.drawCircle(object.position, radius);
   }

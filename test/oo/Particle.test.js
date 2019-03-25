@@ -46,7 +46,7 @@ describe('OO :: Particle', () => {
     const force = Particle.calculateForce(field, vectorX, vectorY);
     expect(force).toBe(0);
   });
-  test('obtaining Acceleration based on oarticle submitted to fields', () => {
+  test('obtaining Acceleration based on particle submitted to fields', () => {
     particle.submitToFields(fields);
     expect(particle.acceleration).toEqual({
       x: -0.0033108810039332026,

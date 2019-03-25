@@ -1,34 +1,45 @@
-let _drawColor = '#d4a8a1';
-let _drawColor2 = '#500';
+import Vector from './Vector.js';
 
 export default class Field {
-  static get drawColor() {
-    return _drawColor;
+  _backgroundColor = '#ff000000';
+
+  _foregroundColor = '#ffff0080';
+
+  get backgroundColor() {
+    return this._backgroundColor;
   }
 
-  static set drawColor(color) {
-    _drawColor = color;
+  set backgroundColor(color) {
+    this._backgroundColor = color;
   }
 
-  static get drawColor2() {
-    return _drawColor2;
+  get foregroundColor() {
+    return this._foregroundColor;
   }
 
-  static set drawColor2(color) {
-    _drawColor2 = color;
+  set foregroundColor(color) {
+    this._foregroundColor = color;
   }
 
-  constructor(point, mass) {
+  constructor(point = new Vector(0, 0), mass = 0) {
     this.position = point;
-    this.size = 28;
-    this.mass = 0;
-    Field.drawColor = '#b00';
+    this.size = Math.abs(mass);
     this.setMass(mass);
   }
 
   setMass(mass) {
     this.mass = mass;
-    Field.drawColor = mass < 0 ? '#f99' : '#9f9';
+    this._setColorByMassValue(mass);
     return this;
+  }
+
+  _setColorByMassValue(mass) {
+    if (mass < 0) {
+      this.backgroundColor = '#4287E000';
+      this.foregroundColor = '#13FF0580';
+    } else {
+      this.backgroundColor = '#ff000000';
+      this.foregroundColor = '#ffff0080';
+    }
   }
 }

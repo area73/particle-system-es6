@@ -1,30 +1,31 @@
 import Particle from './Particle.js';
 import Vector from './Vector.js';
 
-let _drawColor = '#91ff8c';
-let _drawColor2 = '#081608';
-
 export default class Emitter {
-  static get drawColor() {
-    return _drawColor;
+  _backgroundColor = '#00D9FF00';
+
+  _foregroundColor = '#ffffff70';
+
+  get backgroundColor() {
+    return this._backgroundColor;
   }
 
-  static set drawColor(drawColor) {
-    _drawColor = drawColor;
+  set backgroundColor(color) {
+    this._backgroundColor = color;
   }
 
-  static get drawColor2() {
-    return _drawColor2;
+  get foregroundColor() {
+    return this._foregroundColor;
   }
 
-  static set drawColor2(drawColor2) {
-    _drawColor2 = drawColor2;
+  set foregroundColor(color) {
+    this._foregroundColor = color;
   }
 
   constructor(point, velocity) {
     this.position = point;
     this.velocity = velocity;
-    this.size = 15;
+    this.size = 60;
     this.spread = Math.PI / 32;
     this.emissionRate = 4;
   }
