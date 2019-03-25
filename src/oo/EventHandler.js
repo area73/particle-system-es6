@@ -1,3 +1,5 @@
+import EventTarget from 'events';
+
 const _singletonEnforncer = Symbol('private');
 let _instance;
 
