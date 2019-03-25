@@ -22,7 +22,7 @@ export default class Emitter {
     this._foregroundColor = color;
   }
 
-  constructor(point, velocity) {
+  constructor(point = new Vector(), velocity = new Vector()) {
     this.position = point;
     this.velocity = velocity;
     this.size = 60;

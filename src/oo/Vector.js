@@ -3,7 +3,7 @@ export default class Vector {
     return new Vector(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
   }
 
-  constructor(x, y) {
+  constructor(x = 0, y = 0) {
     this.x = x;
     this.y = y;
   }
