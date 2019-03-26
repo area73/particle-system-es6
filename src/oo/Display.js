@@ -16,11 +16,11 @@ export default class Display {
     this.context.scale(this.scale, this.scale);
     this.width = this.canvas.width / this.scale;
     this.height = this.canvas.height / this.scale;
-    this.eventBuilder();
-    this.main();
+    this._eventBuilder();
+    this._main();
   }
 
-  eventBuilder() {
+  _eventBuilder() {
     this.newFrameEv = new Event(PSEvent.newFrame);
     this.beforeUpdateEv = new Event(PSEvent.beforeUpdate);
     this.updateEv = new Event(PSEvent.update);
@@ -30,14 +30,14 @@ export default class Display {
     this.afterDrawEv = new Event(PSEvent.afterDraw);
   }
 
-  main() {
-    this.nextFrame();
+  _main() {
+    this._nextFrame();
     const execute = this.numFrames < this.maxRenderingFrames;
-    execute && requestAnimationFrame(() => this.main());
+    execute && requestAnimationFrame(() => this._main());
   }
 
-  nextFrame() {
-    this.clear();
+  _nextFrame() {
+    this._clear();
     this.eventHandler.dispatchEvent(this.newFrameEv);
     this.eventHandler.dispatchEvent(this.beforeUpdateEv);
     this.eventHandler.dispatchEvent(this.updateEv);
@@ -45,7 +45,7 @@ export default class Display {
     this.eventHandler.dispatchEvent(this.beforeDrawEv);
     this.eventHandler.dispatchEvent(this.drawEv);
     this.eventHandler.dispatchEvent(this.afterDrawEv);
-    this.tick();
+    this._tick();
   }
 
   drawCircle(point, radius) {
@@ -59,15 +59,15 @@ export default class Display {
     this.context.fillStyle = fill;
   }
 
-  tick() {
+  _tick() {
     this.numFrames += 1;
   }
 
-  clear() {
+  _clear() {
     this.context.clearRect(0, 0, this.width, this.height);
   }
 
-  start() {
+  _start() {
     this.paused = false;
   }
 }

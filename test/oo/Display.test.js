@@ -6,27 +6,25 @@ const eh = EventHandler.getInstance();
 document.body.innerHTML = `<canvas id="canvas" style="background-color:black"></canvas>`;
 const canvas = document.getElementById('canvas');
 const disp = new Display(canvas, eh);
-disp._init();
 
 describe('OO :: Display', () => {
   test(' given a canvas and EventHandler create a Display and initilize', () => {
     const newDispl = new Display(canvas, eh);
-    newDispl._init();
+    expect(newDispl).toBeInstanceOf(Display);
+  });
+
+  test('_eventBuilder  Display', () => {
+    disp._eventBuilder();
     expect(disp).toBeInstanceOf(Display);
   });
 
-  test('eventBuilder  Display', () => {
-    disp.eventBuilder();
+  test('_main  Display', () => {
+    disp._main();
     expect(disp).toBeInstanceOf(Display);
   });
 
-  test('main  Display', () => {
-    disp.main();
-    expect(disp).toBeInstanceOf(Display);
-  });
-
-  test('nextFrame  Display', () => {
-    disp.nextFrame();
+  test('_nextFrame  Display', () => {
+    disp._nextFrame();
     expect(disp).toBeInstanceOf(Display);
   });
 
@@ -40,18 +38,18 @@ describe('OO :: Display', () => {
     expect(disp).toBeInstanceOf(Display);
   });
 
-  test('tick  Display', () => {
-    disp.tick();
+  test('_tick  Display', () => {
+    disp._tick();
     expect(disp).toBeInstanceOf(Display);
   });
 
-  test('clear Display', () => {
-    disp.clear();
+  test('_clear Display', () => {
+    disp._clear();
     expect(disp).toBeInstanceOf(Display);
   });
 
-  test('start Display', () => {
-    disp.start();
+  test('_start Display', () => {
+    disp._start();
     expect(disp).toBeInstanceOf(Display);
   });
 });

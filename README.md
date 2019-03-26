@@ -49,7 +49,7 @@ There are right now 3 branches:
 ## <a name="features">Features</a>
 This is a very simple particle system with 3 actors.
 
-**Particle:** the main object of this system that will be affected by forces.
+**Particle:** the _main object of this system that will be affected by forces.
 
 **Emmisor:** Entity that will spell particles at different speed and angle
 
@@ -90,7 +90,7 @@ As I said before there is no need ot install any dependencies although this proj
 None , hurrah !! :metal: :metal:
 
 
-### <a name="start-server">Start the development server</a>
+### <a name="_start-server">Start the development server</a>
 
 ... but (there is always a but), you will need to run the index.html in a server because trying 
 to execute index.html from file directory won't work since ES6 modules are sandbox to be executed
