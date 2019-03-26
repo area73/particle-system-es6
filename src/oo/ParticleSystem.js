@@ -23,12 +23,14 @@ export default class ParticleSystem {
 
   // Adding Objects
   // --------------
+  // TODO :: FIX  mejor pasar el emitter y no instanciarlo dentro del método
   addEmitter(point, velocity) {
     const emitter = new Emitter(point, velocity);
     this.emitters.push(emitter);
     this.drawEmitters();
   }
 
+  // TODO :: FIX  mejor pasar el emitter y no instanciarlo dentro del método
   addField(point, mass) {
     const field = new Field(point, mass);
     this.fields.push(field);
@@ -41,12 +43,13 @@ export default class ParticleSystem {
         this.particles.push(emitter.addParticle());
       }
     });
-    // console.log(this.particles.length);
     this.drawParticles();
   }
 
   // Drawing Objects
   // ---------------
+  // TODO [TALK] :: ejemplo de composición
+  // TODO [TALK] :: moveParticles(particlesInside(this.particles))
   plotParticles(boundsX, boundsY) {
     const inBound = bound => position => position > 0 && position < bound;
     const particlesInside = particles =>
