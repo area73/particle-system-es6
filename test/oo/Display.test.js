@@ -6,12 +6,12 @@ const eh = EventHandler.getInstance();
 document.body.innerHTML = `<canvas id="canvas" style="background-color:black"></canvas>`;
 const canvas = document.getElementById('canvas');
 const disp = new Display(canvas, eh);
-disp.init();
+disp._init();
 
 describe('OO :: Display', () => {
   test(' given a canvas and EventHandler create a Display and initilize', () => {
     const newDispl = new Display(canvas, eh);
-    newDispl.init();
+    newDispl._init();
     expect(disp).toBeInstanceOf(Display);
   });
 

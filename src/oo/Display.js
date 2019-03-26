@@ -8,9 +8,10 @@ export default class Display {
     this.maxRenderingFrames = 33300;
     this.scale = 1;
     this.eventHandler = eventHandler;
+    this._init();
   }
 
-  init() {
+  _init() {
     this.context = this.canvas.getContext('2d');
     this.context.scale(this.scale, this.scale);
     this.width = this.canvas.width / this.scale;

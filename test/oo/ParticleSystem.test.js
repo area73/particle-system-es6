@@ -12,7 +12,7 @@ const ps = new ParticleSystem(eh);
 document.body.innerHTML = `<canvas id="canvas" style="background-color:black"></canvas>`;
 const canvas = document.getElementById('canvas');
 const disp = new Display(canvas, eh);
-disp.init();
+disp._init();
 const point = new Vector(10, 20);
 const velocity = new Vector(5, 7);
 const mass = 240;
@@ -26,7 +26,7 @@ describe('OO :: ParticleSytem', () => {
   test(' Given an eventHandler instantiate a ParticleSystem', () => {
     expect(ps).toBeInstanceOf(ParticleSystem);
   });
-  test(' given a Display init ParticleSystem', () => {
+  test(' given a Display _init ParticleSystem', () => {
     ps.init(disp);
     expect(ps.display).not.toBeNull();
   });
