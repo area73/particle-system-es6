@@ -1,5 +1,5 @@
 import ParticleSystem from '../../src/oo/ParticleSystem.js';
-import EventHandler from './mock/EventHandler.mock.js';
+import EventHandler from '../../src/oo/mock/EventHandler.mock.js';
 import Display from '../../src/oo/Display.js';
 import Vector from '../../src/oo/Vector.js';
 import Particle from '../../src/oo/Particle.js';

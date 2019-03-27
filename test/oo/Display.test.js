@@ -1,5 +1,5 @@
 import Display from '../../src/oo/Display.js';
-import EventHandler from './mock/EventHandler.mock.js';
+import EventHandler from '../../src/oo/mock/EventHandler.mock.js';
 import Vector from '../../src/oo/Vector.js';
 
 const eh = EventHandler.getInstance();
