@@ -32,25 +32,25 @@ describe('OO :: ParticleSytem', () => {
   });
   test(' Can add an emitter to ParticleSystem', () => {
     ps.init(disp);
-    ps.addEmitter(point, velocity);
+    ps.addEmitter(new Emitter(point, velocity));
     expect(ps.emitters.length > 0).toBeTrue();
   });
 
   test(' Can add a field to ParticleSystem', () => {
     ps.init(disp);
-    ps.addField(point, mass);
+    ps.addField(new Field(point, mass));
     expect(ps.fields.length > 0).toBeTrue();
   });
 
   test(' Can add a new particles (to emitters) to ParticleSystem', () => {
     ps.init(disp);
-    ps.addEmitter(point, velocity);
+    ps.addEmitter(new Emitter(point, velocity));
     ps.addNewParticles();
     expect(ps.particles.length > 0).toBeTrue();
   });
   test(' Will return a subgroup of particles to be plot within a boundry in a ParticleSystem', () => {
     ps.init(disp);
-    ps.addEmitter(point, velocity);
+    ps.addEmitter(new Emitter(point, velocity));
     ps.particles = [particleA, particleB, particleC, particleD];
     ps.plotParticles(2, 2);
     expect(ps.particles.length).toBe(1);
@@ -58,7 +58,7 @@ describe('OO :: ParticleSytem', () => {
   // TODO : improve testing
   test(' Will draw particles ParticleSystem', () => {
     ps.init(disp);
-    ps.addEmitter(point, velocity);
+    ps.addEmitter(new Emitter(point, velocity));
     ps.particles = [particleA, particleB, particleC, particleD];
     ps.drawParticles();
     expect(ps).toBeInstanceOf(ParticleSystem);
@@ -66,7 +66,7 @@ describe('OO :: ParticleSytem', () => {
   // TODO : improve testing
   test(' Will draw fields in a ParticleSystem', () => {
     ps.init(disp);
-    ps.addEmitter(point, velocity);
+    ps.addEmitter(new Emitter(point, velocity));
     ps.particles = [particleA, particleB, particleC, particleD];
     ps.drawFields();
     expect(ps).toBeInstanceOf(ParticleSystem);
@@ -74,7 +74,7 @@ describe('OO :: ParticleSytem', () => {
   // TODO : improve testing
   test(' Will draw emitters in a ParticleSystem', () => {
     ps.init(disp);
-    ps.addEmitter(point, velocity);
+    ps.addEmitter(new Emitter(point, velocity));
     ps.particles = [particleA, particleB, particleC, particleD];
     ps.drawEmitters();
     expect(ps).toBeInstanceOf(ParticleSystem);

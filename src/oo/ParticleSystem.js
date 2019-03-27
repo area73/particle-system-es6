@@ -1,5 +1,3 @@
-import Emitter from './Emitter.js';
-import Field from './Field.js';
 import Particle from './Particle.js';
 import { PSEvent } from './PSEvent.js';
 
@@ -23,32 +21,34 @@ export default class ParticleSystem {
 
   // Adding Objects
   // --------------
-  // TODO :: FIX  mejor pasar el emitter y no instanciarlo dentro del método
-  addEmitter(point, velocity) {
-    const emitter = new Emitter(point, velocity);
+  addEmitter(emitter) {
     this.emitters.push(emitter);
     this.drawEmitters();
   }
 
-  // TODO :: FIX  mejor pasar el emitter y no instanciarlo dentro del método
-  addField(point, mass) {
-    const field = new Field(point, mass);
+  addField(field) {
     this.fields.push(field);
     this.drawFields();
   }
 
+  _repeat(n, fn) {
+    fn();
+    return n ? this._repeat(n - 1, fn) : null;
+  }
+
   addNewParticles() {
     this.emitters.forEach(emitter => {
-      for (let i = 0; i < emitter.emissionRate; i += 1) {
-        this.particles.push(emitter.addParticle());
-      }
+      // TODO [TALK] :: _repeat is a recursive fn to simulate an imperative for
+      this._repeat(emitter.emissionRate, () =>
+        this.particles.push(emitter.addParticle()),
+      );
     });
     this.drawParticles();
   }
 
   // Drawing Objects
   // ---------------
-  // TODO [TALK] :: ejemplo de composición
+  // TODO [TALK] :: composition example
   // TODO [TALK] :: moveParticles(particlesInside(this.particles))
   plotParticles(boundsX, boundsY) {
     const inBound = bound => position => position > 0 && position < bound;
