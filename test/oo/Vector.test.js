@@ -20,19 +20,19 @@ describe('OO :: Test Vector', () => {
 
   test('get Polar angle of a vector', () => {
     const v = new Vector(10, 20);
-    const ang = v.getAngle();
+    const ang = v.polar();
     expect(ang).toBe(1.1071487177940904);
   });
 
   test('get Polar angle of a vector (edge)', () => {
     const v = new Vector(0, 20);
-    const ang = v.getAngle();
+    const ang = v.polar();
     expect(ang).toBe(1.5707963267948966);
   });
 
   test('get Polar angle of a vector (edge)', () => {
     const v = new Vector(20, 0);
-    const ang = v.getAngle();
+    const ang = v.polar();
     expect(ang).toBe(0);
   });
 

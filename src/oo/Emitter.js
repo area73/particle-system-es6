@@ -34,9 +34,7 @@ export default class Emitter {
     return new Particle(
       this.position.copy(),
       Vector.fromAngle(
-        this.velocity.getAngle() +
-          this.spread -
-          Math.random() * this.spread * 2,
+        this.velocity.polar() + this.spread - Math.random() * this.spread * 2,
         this.velocity.getMagnitude(),
       ),
     );

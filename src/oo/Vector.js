@@ -12,8 +12,7 @@ export default class Vector {
     return Math.sqrt(this.x ** 2 + this.y ** 2);
   }
 
-  // TODO: change signature of method to be "polar()" like in FP
-  getAngle() {
+  polar() {
     return Math.atan2(this.y, this.x);
   }
 

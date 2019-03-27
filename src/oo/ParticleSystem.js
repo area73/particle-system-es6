@@ -46,8 +46,6 @@ export default class ParticleSystem {
     this.drawParticles();
   }
 
-  // Drawing Objects
-  // ---------------
   // TODO [TALK] :: composition example
   // TODO [TALK] :: moveParticles(particlesInside(this.particles))
   plotParticles(boundsX, boundsY) {
