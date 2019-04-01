@@ -1,31 +1,15 @@
 import { Display } from './display.js';
-import { emitter } from './emitter.js';
 import { Particle } from './particle.js';
-import { Field } from './Field.js';
-import { Vector } from './Vector.js';
 import * as R from '../../lib/ramda';
+import { Data } from './data.js';
 
 // Display
 const canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const disp = Display(canvas);
-// Emitters
-const emitters = [
-  emitter({
-    position: Vector(200, 200),
-    velocity: Vector(2, 0),
-  }),
-  emitter({
-    position: Vector(800, 200),
-    velocity: Vector(-2, 0),
-  }),
-];
-// Fields
-const fields = [
-  Field({ position: Vector(400, 200), mass: -100 }),
-  Field({ position: Vector(500, 400), mass: 250 }),
-];
+// Emitters, fields
+const { emitters, fields } = Data;
 // Particles
 const addParticlesToEmitters = emtrs => particles =>
   emtrs.reduce(
@@ -35,9 +19,14 @@ const addParticlesToEmitters = emtrs => particles =>
     ],
     particles,
   );
+
+const Draw = display => ({ display });
+
 // paint
-const drawFields = (flds, dspl) => () =>
-  flds.forEach(fld => Display.circleGradientDraw(dspl, fld));
+Draw.fields = (flds, dspl) => () => {
+  return flds.forEach(fld => Display.circleGradientDraw(dspl, fld));
+};
+
 const drawEmitters = (emttrs, dspl) => () =>
   emttrs.forEach(emttr => Display.circleGradientDraw(dspl, emttr));
 const drawParticles = dspl => (particles = []) =>
@@ -59,7 +48,7 @@ const loop = (cont, dspl, flds, emttrs, particles = []) => {
     removeUnboundParticles(Display.boundary(disp)),
     moveParticles(fields),
     addParticlesToEmitters(emitters),
-    R.tap(drawFields(fields, disp)),
+    R.tap(Draw.fields(fields, disp)),
     R.tap(drawEmitters(emitters, disp)),
     R.tap(drawParticles(disp)),
     R.tap(requestFrame(cont - 1)(disp)(fields)(emitters)),
