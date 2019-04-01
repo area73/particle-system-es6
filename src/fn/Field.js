@@ -1,11 +1,11 @@
 export const Field = ({
   position = { x: 0, y: 0 },
-  size = 28,
+  size,
   mass = -450,
-  color = [[0, 0, 255, 1], [255, 0, 0, 1]],
+  color = [[127, 183, 255, 0.039], [19, 255, 5, 0.376]],
 } = {}) => ({
   position,
-  size,
+  size: size || Math.abs(mass),
   mass,
-  color,
+  color: mass < 0 ? color : [[255, 0, 0, 0], [255, 255, 0, 0.501]],
 });

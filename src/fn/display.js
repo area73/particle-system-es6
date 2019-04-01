@@ -32,7 +32,7 @@ Display.circleGradientDraw = (disp, obj) => {
   const gradient = ctx.createRadialGradient(
     position.x,
     position.y,
-    size,
+    size / 2,
     position.x,
     position.y,
     0,
@@ -42,7 +42,7 @@ Display.circleGradientDraw = (disp, obj) => {
   Display.circleDraw({ disp, obj, gradient });
 };
 
-Display.clearCtx = disp => () =>
+Display.clearCtx = disp =>
   Display.clone(disp).ctx.clearRect(
     0,
     0,

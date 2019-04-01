@@ -4,7 +4,7 @@ export const emitter = ({
   size = 15,
   spread = Math.PI / 32,
   frequency = 4, // emissionRate
-  color = [[0, 255, 0, 1], [0, 0, 255, 1]],
+  color = [[0, 217, 255, 0], [255, 255, 255, 0.439]],
 } = {}) => ({
   position,
   velocity,
