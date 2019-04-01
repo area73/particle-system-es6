@@ -37,9 +37,9 @@ const addParticlesToEmitters = emtrs => particles =>
   );
 // paint
 const drawFields = (flds, dspl) => () =>
-  flds.forEach(fld => Display.circleGradiantDraw(dspl, fld));
+  flds.forEach(fld => Display.circleGradientDraw(dspl, fld));
 const drawEmitters = (emttrs, dspl) => () =>
-  emttrs.forEach(emttr => Display.circleGradiantDraw(dspl, emttr));
+  emttrs.forEach(emttr => Display.circleGradientDraw(dspl, emttr));
 const drawParticles = dspl => (particles = []) =>
   particles.forEach(prtcl => Display.squaredDraw({ disp: dspl, obj: prtcl }));
 // move

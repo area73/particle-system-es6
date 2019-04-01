@@ -26,7 +26,7 @@ Display.circleDraw = ({ disp, obj, gradient = null }) => {
 
 Display.boundary = disp => Vector(disp.canvas.width, disp.canvas.height);
 
-Display.circleGradiantDraw = (disp, obj) => {
+Display.circleGradientDraw = (disp, obj) => {
   const { ctx } = disp;
   const { position, size, color } = obj;
   const gradient = ctx.createRadialGradient(
