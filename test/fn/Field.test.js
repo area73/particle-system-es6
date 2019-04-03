@@ -5,9 +5,9 @@ describe('λ :: Test Field', () => {
     const newField = Field();
     expect(newField).toEqual({
       position: { x: 0, y: 0 },
-      size: 28,
+      size: 450,
       mass: -450,
-      color: [[0, 0, 255, 1], [255, 0, 0, 1]],
+      color: [[127, 183, 255, 0.039], [19, 255, 5, 0.376]],
     });
   });
 
@@ -17,7 +17,7 @@ describe('λ :: Test Field', () => {
       position: { x: 0, y: 0 },
       size: 50,
       mass: -450,
-      color: [[0, 0, 255, 1], [255, 0, 0, 1]],
+      color: [[127, 183, 255, 0.039], [19, 255, 5, 0.376]],
     });
   });
 });

@@ -1,3 +1,6 @@
+import * as R from '../../lib/ramda';
+import { Particle } from './particle.js';
+
 export const emitter = ({
   position = { x: 0, y: 0 },
   velocity = { x: 1, y: 1 },
@@ -13,3 +16,6 @@ export const emitter = ({
   frequency,
   color,
 });
+
+emitter.addParticles = emmit =>
+  R.call(R.times(() => Particle.attachToEmitter(emmit)), emmit.frequency);

@@ -41,7 +41,7 @@ There are right now 3 branches:
 * [Built With](#Built-With)
 * [Authors](#Authors)
 * [License](#License)
-* [Acknowledgments](#Acknowledgments)
+* [Bibliography / Acknowledgments](#Acknowledgments)
 
 <hr>
 
@@ -115,9 +115,15 @@ Work by:
 ## <a name="License">License</a>
 MIT Licence
 
-## <a name="Acknowledgments">Acknowledgments</a>
+## <a name="Acknowledgments">Bibliography / Acknowledgments</a>
 This Particle system is base on this article and repo:
 
 https://software.intel.com/en-us/html5/hub/blogs/build-a-javascript-particle-system-in-200-lines
 
 https://github.com/jsoverson/JavaScript-Particle-System
+
+[A functional canvas approach with redux](https://medium
+.com/@peterxjang/a-functional-canvas-approach-with-redux-ce59a369241b)
+
+https://www.oddlyfunctional.com/making-a-game-with-functional-programming-part-1
+

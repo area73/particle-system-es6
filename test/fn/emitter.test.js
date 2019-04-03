@@ -1,4 +1,4 @@
-import { emitter } from '../../src/fn/emitter';
+import { emitter } from '../../src/fn/emitter.js';
 
 describe('λ :: Test emitter', () => {
   test('get an emitter', () => {
@@ -9,7 +9,7 @@ describe('λ :: Test emitter', () => {
       size: 15,
       spread: Math.PI / 32,
       frequency: 4, // emissionRate
-      color: [[0, 255, 0, 1], [0, 0, 255, 1]],
+      color: [[0, 217, 255, 0], [255, 255, 255, 0.439]],
     });
   });
 
@@ -21,7 +21,13 @@ describe('λ :: Test emitter', () => {
       size: 50,
       spread: Math.PI / 32,
       frequency: 4, // emissionRate
-      color: [[0, 255, 0, 1], [0, 0, 255, 1]],
+      color: [[0, 217, 255, 0], [255, 255, 255, 0.439]],
     });
+  });
+
+  test('get new  particles from an emiiter with an emition rate of 6', () => {
+    const emit = emitter({ frequency: 6 });
+    const particles = emitter.addParticles(emit);
+    expect(particles.length).toBe(6);
   });
 });

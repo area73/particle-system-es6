@@ -3,6 +3,7 @@ import { Particle } from './particle.js';
 import * as R from '../../lib/ramda';
 import { Data } from './data.js';
 import { draw } from './draw.js';
+import { emitter } from './emitter.js';
 
 // Display
 const canvas = document.getElementById('canvas');
@@ -13,14 +14,8 @@ const disp = Display(canvas);
 const { emitters, fields } = Data;
 
 // Particles
-const addNewParticlesToEmitters = emtrs => particles =>
-  emtrs.reduce(
-    (acc, cur) => [
-      ...acc,
-      ...R.call(R.times(() => Particle.attachToEmitter(cur)), cur.frequency),
-    ],
-    particles,
-  );
+export const addNewParticlesToEmitters = emtrs => particles =>
+  emtrs.reduce((acc, cur) => [...acc, ...emitter.addParticles(cur)], particles);
 
 // move
 const moveParticles = flds => particles =>
@@ -51,4 +46,4 @@ const loop = (cont, dspl, flds, emttrs, particles = []) => {
   )(particles);
 };
 
-loop(900, disp, fields, emitters);
+loop(-1, disp, fields, emitters);
