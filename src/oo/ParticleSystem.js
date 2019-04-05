@@ -31,6 +31,7 @@ export default class ParticleSystem {
     this.drawFields();
   }
 
+  // [TALK][01]<20> :: is this a high order function ?
   _repeat(n, fn) {
     fn();
     return n ? this._repeat(n - 1, fn) : null;
@@ -38,7 +39,7 @@ export default class ParticleSystem {
 
   addNewParticles() {
     this.emitters.forEach(emitter => {
-      // TODO [TALK] :: _repeat is a recursive fn to simulate an imperative for
+      // [TALK][01]<10> :: _repeat is a recursive fn to simulate an imperative for
       this._repeat(emitter.emissionRate, () =>
         this.particles.push(emitter.addParticle()),
       );
@@ -46,8 +47,8 @@ export default class ParticleSystem {
     this.drawParticles();
   }
 
-  // TODO [TALK] :: composition example
-  // TODO [TALK] :: moveParticles(particlesInside(this.particles))
+  // [TALK][01]<30> :: composition example
+  // [TALK][01]<30> :: moveParticles(particlesInside(this.particles))
   plotParticles(boundsX, boundsY) {
     const inBound = bound => position => position > 0 && position < bound;
     const particlesInside = particles =>

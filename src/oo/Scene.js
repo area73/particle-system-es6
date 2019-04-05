@@ -4,14 +4,14 @@ import Vector from './Vector.js';
 import EventHandler from './EventHandler.js';
 import Emitter from './Emitter.js';
 import Field from './Field.js';
+
 // TODO [TALK] :: Event Handler singleton that extend EventTarget
-// TODO [TALK] :: Alternative way compare with PSEvent
 const eventHandler = EventHandler.getInstance();
 const canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-// TODO [TALK] :: Creates an enviroment with cnavas & eventHandler
-// TODO [TALK] :: it will be in charge of creating and dispatching the events
+
+// TODO [TALK] :: Creates an enviroment with canvas & eventHandler
 const display = new Display(canvas, eventHandler);
 
 const particleSystem = new ParticleSystem(eventHandler);
