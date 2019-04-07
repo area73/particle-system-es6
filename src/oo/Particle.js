@@ -12,7 +12,7 @@ export default class Particle {
     return _size;
   }
 
-  // TODO :: we are only using the mas of the field. Do we need the field?
+  // TODO :: we are only using the mass of the field. Do we need the field?
   // TODO:: maybe refactoring this outside on a helper class
   static calculateForce(field, vectorX, vectorY) {
     const { mass } = field;
