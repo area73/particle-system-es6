@@ -9,5 +9,5 @@ draw.emitters = emttrs => dspl =>
   emttrs.forEach(emttr => Display.circleGradientDraw(dspl, emttr));
 
 draw.particles = (particles = []) => dspl =>
-  particles.forEach(prtcl => Display.squaredDraw({ disp: dspl, obj: prtcl }));
-// particles.forEach(prtcl => Display.circleDraw({ disp: dspl, obj: prtcl }));
+  // particles.forEach(prtcl => Display.squaredDraw({ disp: dspl, obj: prtcl }));
+  particles.forEach(prtcl => Display.circleDraw({ disp: dspl, obj: prtcl }));

@@ -9,7 +9,12 @@ const emitters = [
     spread: 2 * Math.PI,
   }),
 ];
-const fields = [Field({ position: Vector(300, 300), mass: 0 })];
+const fields = [
+  Field({ position: Vector(100, 100), mass: 450 }),
+  Field({ position: Vector(100, 500), mass: 450 }),
+  Field({ position: Vector(500, 100), mass: 450 }),
+  Field({ position: Vector(500, 500), mass: 450 }),
+];
 
 export const Data = {
   emitters,

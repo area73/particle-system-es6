@@ -1,5 +1,7 @@
 # Particle System :: from Object Oriented to functional
 
 ## Exercises
-* Make particles colorful (we need to modify Particle.attachToEmitter)
-  HINT: use SOLID principle (Open/Close => open for extension, but closed for modification) 
+Limit particles: We we allow to create infinite particles the system my collapse.
+We can:
+ - limit the life time of the particle
+ - limit the max number of particles

@@ -30,7 +30,7 @@ emitter.addColorfulParticles = emmit =>
             Math.round(Math.random() * 255),
             Math.round(Math.random() * 255),
             Math.round(Math.random() * 255),
-            Math.random(),
+            Math.random() / 2,
           ],
           // size: Math.round(Math.random() * 20) + 1,
         }),
