@@ -30,4 +30,10 @@ describe('λ :: Test emitter', () => {
     const particles = emitter.addParticles(emit);
     expect(particles.length).toBe(6);
   });
+
+  test('attach particles with different colours to emitter', () => {
+    const emit = emitter({ frequency: 6 });
+    const particles = emitter.addParticles(emit);
+    expect(particles.length).toBe(6);
+  });
 });

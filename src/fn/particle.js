@@ -49,15 +49,17 @@ Particle.isInBound = (boundary, particle) =>
   particle.position.x > 0 &&
   particle.position.y > 0;
 
-Particle.attachToEmitter = refObj => {
+// [TALK] we need to add a particle with difernet color each time, so maybe
+// [TALK] we should change this function and make it more extensible
+Particle.attachToEmitter = emitterRef => {
   const particleOverride = {};
   const particle = Particle();
-  particleOverride.position = refObj.position;
+  particleOverride.position = emitterRef.position;
   particleOverride.velocity = Vector.fromAngle(
-    Vector.polar(refObj.velocity) +
-      refObj.spread -
-      Math.random() * refObj.spread * 2,
-    Vector.magnitude(refObj.velocity),
+    Vector.polar(emitterRef.velocity) +
+      emitterRef.spread -
+      Math.random() * emitterRef.spread * 2,
+    Vector.magnitude(emitterRef.velocity),
   );
   return { ...particle, ...particleOverride };
 };
