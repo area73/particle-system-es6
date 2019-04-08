@@ -1,6 +1,7 @@
 import { Vector } from '../../src/fn/Vector';
 import { Particle } from '../../src/fn/particle.js';
 import { Field } from '../../src/fn/Field.js';
+import { emitter } from '../../src/fn/emitter.js';
 
 describe('λ :: Test Particle', () => {
   test('get a particle', () => {
@@ -91,4 +92,18 @@ describe('λ :: Test Particle', () => {
     expect(Particle.isInBound(boundary, particleIn)).toBeTruthy();
     expect(Particle.isInBound(boundary, particleOut)).not.toBeTruthy();
   });
+
+  test('attach particle to emitter', () => {
+    const emitt = emitter({
+      frequency: 6,
+      position: Vector(10, 20),
+      velocity: Vector(-12, 7),
+    });
+    const particle = Particle.attachToEmitter(emitt);
+    expect(particle.position).toEqual({ x: 10, y: 20 });
+    expect(particle.acceleration).toEqual({ x: 0, y: 0 });
+    expect(particle.size).toEqual(2);
+    expect(particle.color).toEqual([66, 167, 222, 1]);
+  });
+
 });
