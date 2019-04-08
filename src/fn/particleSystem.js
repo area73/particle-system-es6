@@ -1,7 +1,7 @@
 import { Display } from './display.js';
 import { Particle } from './particle.js';
 import * as R from '../../lib/ramda';
-import { Data } from './data.js';
+import { Data } from './data2.js';
 import { draw } from './draw.js';
 import { emitter } from './emitter.js';
 
