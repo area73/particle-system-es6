@@ -3,7 +3,7 @@ import { Vector } from './Vector.js';
 
 export const Particle = ({
   position = { x: Math.random() * 1000, y: Math.random() * 1000 },
-  velocity = { x: Math.random() * 10, y: Math.random() * 10 },
+  velocity = { x: Math.random() * 10 - 5, y: Math.random() * 10 - 5 },
   acceleration = { x: 0, y: 0 },
   color = [66, 167, 222, 1],
   size = 2,

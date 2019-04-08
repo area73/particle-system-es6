@@ -27,8 +27,7 @@ const moveParticles = flds => particles =>
 const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
   parts.filter(particle => Particle.isInBound(boundary, particle));
 
-const limitNumberOfParticles = n => part =>
-  part.slice(part.length - n, part.length);
+const limitNumberOfParticles = n => part => part.slice(0, n);
 
 // Loop
 const requestFrame = cont => dspl => flds => emttrs => prtcls =>
@@ -43,12 +42,30 @@ const redrawElements = fld => emitt => dis => part =>
     R.tap(draw.particles(part)),
   )(dis);
 
+const addParticles = n => part => [
+  ...part,
+  ...R.times(
+    () =>
+      Particle({
+        color: [
+          Math.round(Math.random() * 255),
+          Math.round(Math.random() * 255),
+          Math.round(Math.random() * 255),
+          Math.random() / 2,
+        ],
+        size: 2,
+      }),
+    n,
+  ),
+];
+
 const loop = (cont, dspl, flds, emttrs, particles = []) => {
   R.pipe(
-    addNewParticlesToEmitters(emitters),
+    // addNewParticlesToEmitters(emitters),
+    addParticles(6),
     moveParticles(fields),
     removeUnboundParticles(Display.boundary(disp)),
-    limitNumberOfParticles(3000),
+    limitNumberOfParticles(1000),
     R.tap(redrawElements(fields)(emitters)(disp)),
     R.tap(requestFrame(cont - 1)(disp)(fields)(emitters)),
   )(particles);
