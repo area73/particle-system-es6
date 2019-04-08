@@ -10,3 +10,4 @@ draw.emitters = emttrs => dspl =>
 
 draw.particles = (particles = []) => dspl =>
   particles.forEach(prtcl => Display.squaredDraw({ disp: dspl, obj: prtcl }));
+// particles.forEach(prtcl => Display.circleDraw({ disp: dspl, obj: prtcl }));

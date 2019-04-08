@@ -19,3 +19,22 @@ export const emitter = ({
 
 emitter.addParticles = emmit =>
   R.call(R.times(() => Particle.attachToEmitter(emmit)), emmit.frequency);
+
+emitter.addColorfulParticles = emmit =>
+  R.call(
+    R.times(() =>
+      Particle.attachToEmitter(
+        emmit,
+        Particle({
+          color: [
+            Math.round(Math.random() * 255),
+            Math.round(Math.random() * 255),
+            Math.round(Math.random() * 255),
+            Math.random(),
+          ],
+          // size: Math.round(Math.random() * 20) + 1,
+        }),
+      ),
+    ),
+    emmit.frequency,
+  );

@@ -51,9 +51,9 @@ Particle.isInBound = (boundary, particle) =>
 
 // [TALK] we need to add a particle with difernet color each time, so maybe
 // [TALK] we should change this function and make it more extensible
-Particle.attachToEmitter = emitterRef => {
+Particle.attachToEmitter = (emitterRef, customParticle) => {
   const particleOverride = {};
-  const particle = Particle();
+  const particle = customParticle || Particle();
   particleOverride.position = emitterRef.position;
   particleOverride.velocity = Vector.fromAngle(
     Vector.polar(emitterRef.velocity) +

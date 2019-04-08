@@ -106,4 +106,18 @@ describe('λ :: Test Particle', () => {
     expect(particle.color).toEqual([66, 167, 222, 1]);
   });
 
+  test('attach custom particle to emitter', () => {
+    const emitt = emitter({
+      frequency: 6,
+      position: Vector(10, 20),
+      velocity: Vector(-12, 7),
+    });
+
+    const customParticle = Particle({ size: 4, color: [255, 255, 0, 1] });
+    const particle = Particle.attachToEmitter(emitt, customParticle);
+    expect(particle.position).toEqual({ x: 10, y: 20 });
+    expect(particle.acceleration).toEqual({ x: 0, y: 0 });
+    expect(particle.size).toEqual(4);
+    expect(particle.color).toEqual([255, 255, 0, 1]);
+  });
 });
