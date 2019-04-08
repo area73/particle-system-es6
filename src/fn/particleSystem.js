@@ -26,6 +26,10 @@ const moveParticles = flds => particles =>
 // Clean
 const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
   parts.filter(particle => Particle.isInBound(boundary, particle));
+
+const limitNumberOfParticles = n => part =>
+  part.slice(part.length - n, part.length);
+
 // Loop
 const requestFrame = cont => dspl => flds => emttrs => prtcls =>
   // eslint-disable-next-line no-use-before-define
@@ -44,6 +48,7 @@ const loop = (cont, dspl, flds, emttrs, particles = []) => {
     addNewParticlesToEmitters(emitters),
     moveParticles(fields),
     removeUnboundParticles(Display.boundary(disp)),
+    limitNumberOfParticles(3000),
     R.tap(redrawElements(fields)(emitters)(disp)),
     R.tap(requestFrame(cont - 1)(disp)(fields)(emitters)),
   )(particles);
