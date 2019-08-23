@@ -1,4 +1,4 @@
-import * as R from '../../lib/ramda';
+import * as R from '../../lib/ramda/index.js';
 import { Particle } from './particle.js';
 
 export const emitter = ({

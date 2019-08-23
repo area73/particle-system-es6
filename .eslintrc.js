@@ -15,6 +15,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-mixed-operators': 'off',
     'no-undef': 0,
+    'no-unused-vars': [0, {'vars': 'all', 'args': 'after-used'}],
     'import/extensions': 0,
     'import/prefer-default-export': 0,
     'prettier/prettier': 'error',

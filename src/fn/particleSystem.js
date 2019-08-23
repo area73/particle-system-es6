@@ -1,7 +1,7 @@
 import { Display } from './display.js';
 import { Particle } from './particle.js';
-import * as R from '../../lib/ramda';
-import { Data } from './data4.js';
+import * as R from '../../lib/ramda/index.js';
+import { Data } from './data.js';
 import { draw } from './draw.js';
 import { emitter } from './emitter.js';
 
@@ -61,11 +61,11 @@ const addParticles = n => part => [
 
 const loop = (cont, dspl, flds, emttrs, particles = []) => {
   R.pipe(
-    // addNewParticlesToEmitters(emitters),
+    addNewParticlesToEmitters(emitters),
     addParticles(6),
     moveParticles(fields),
     removeUnboundParticles(Display.boundary(disp)),
-    limitNumberOfParticles(1000),
+    // limitNumberOfParticles(1000),
     R.tap(redrawElements(fields)(emitters)(disp)),
     R.tap(requestFrame(cont - 1)(disp)(fields)(emitters)),
   )(particles);

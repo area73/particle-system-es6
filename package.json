@@ -4,7 +4,7 @@
   "description": "PArticle System ES6 using classes",
   "main": "index.js",
   "scripts": {
-    "start-server": "npx simple-server",
+    "start": "npx http-server",
     "test": "jest --watch --config=jest.config.js",
     "test-no-watch": "jest --config=jest.config.js",
     "eslint": "eslint \"src/**/*.js\"",
