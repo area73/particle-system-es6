@@ -16,7 +16,7 @@ const { emitters, fields } = Data;
 // Particles
 export const addNewParticlesToEmitters = emtrs => particles =>
   emtrs.reduce((acc, cur) => [...acc, ...emitter.addParticles(cur)], particles);
-  /*
+/*
   emtrs.reduce(
     (acc, cur) => [...acc, ...emitter.addColorfulParticles(cur)],
     particles,

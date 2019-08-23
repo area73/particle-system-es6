@@ -17,7 +17,9 @@ const display = new Display(canvas, eventHandler);
 const particleSystem = new ParticleSystem(eventHandler);
 particleSystem.init(display);
 display._start();
-particleSystem.addEmitter(new Emitter(new Vector(225, 100), Vector.fromAngle(Math.PI/2, 2)));
+particleSystem.addEmitter(
+  new Emitter(new Vector(225, 100), Vector.fromAngle(Math.PI / 2, 2)),
+);
 particleSystem.addField(new Field(new Vector(300, 300), -100));
 particleSystem.addField(new Field(new Vector(200, 500), 200));
 particleSystem.addField(new Field(new Vector(300, 800), -300));
