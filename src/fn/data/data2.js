@@ -1,6 +1,6 @@
-import { emitter } from './emitter.js';
-import { Vector } from './Vector.js';
-import { Field } from './Field.js';
+import { emitter } from '../emitter.js';
+import { Vector }  from '../Vector.js';
+import { Field }   from '../Field.js';
 
 const emitters = [
   emitter({
