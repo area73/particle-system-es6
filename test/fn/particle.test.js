@@ -102,7 +102,7 @@ describe('λ :: Test Particle', () => {
     const particle = Particle.attachToEmitter(emitt);
     expect(particle.position).toEqual({ x: 10, y: 20 });
     expect(particle.acceleration).toEqual({ x: 0, y: 0 });
-    expect(particle.size).toEqual(2);
+    expect(particle.size).toEqual(1);
     expect(particle.color).toEqual([66, 167, 222, 1]);
   });
 

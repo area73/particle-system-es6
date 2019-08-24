@@ -6,7 +6,7 @@ export const Particle = ({
   velocity = { x: Math.random() * 10 - 5, y: Math.random() * 10 - 5 },
   acceleration = { x: 0, y: 0 },
   color = [66, 167, 222, 1],
-  size = 2,
+  size = 1,
 } = {}) => ({
   position,
   velocity,

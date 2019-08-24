@@ -31,7 +31,6 @@ export default class ParticleSystem {
     this.drawFields();
   }
 
-  // [TALK][01]<20> :: is this a high order function ?
   _repeat(n, fn) {
     fn();
     return n ? this._repeat(n - 1, fn) : null;
@@ -47,8 +46,6 @@ export default class ParticleSystem {
     this.drawParticles();
   }
 
-  // [TALK][01]<30> :: composition example
-  // [TALK][01]<30> :: moveParticles(particlesInside(this.particles))
   plotParticles(boundsX, boundsY) {
     const inBound = bound => position => position > 0 && position < bound;
     const particlesInside = particles =>

@@ -10,7 +10,7 @@ const emitters = [
 ];
 const fields = [
   Field({ position: Vector(300, 300), mass: -100 }),
-  Field({ position: Vector(200, 500), mass: 200 }),
+  Field({ position: Vector(200, 500), mass: 150 }),
   Field({ position: Vector(300, 800), mass: -300 }),
 ];
 

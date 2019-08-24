@@ -47,9 +47,4 @@ describe('OO :: Display', () => {
     disp._clear();
     expect(disp).toBeInstanceOf(Display);
   });
-
-  test('_start Display', () => {
-    disp._start();
-    expect(disp).toBeInstanceOf(Display);
-  });
 });

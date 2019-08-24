@@ -67,7 +67,4 @@ export default class Display {
     this.context.clearRect(0, 0, this.width, this.height);
   }
 
-  _start() {
-    this.paused = false;
-  }
 }
