@@ -1,7 +1,6 @@
 import { Display } from './display.js';
 import { Particle } from './particle.js';
 import { Data } from './data/data5.js';
-import { emitter } from './emitter.js';
 import { tap, pipe, times } from './fnUtils.js';
 
 // Display
@@ -13,14 +12,6 @@ const disp = Display(canvas);
 // Emitters, fields
 const { emitters, fields } = Data;
 
-// emtrs.reduce((acc, cur) => [...acc, ...emitter.addParticles(cur)], particles);
-/*
-  emtrs.reduce(
-    (acc, cur) => [...acc, ...emitter.addColorfulParticles(cur)],
-    particles,
-  );
-  */
-
 // move
 const moveParticles = flds => particles =>
   particles.map(part => Particle.move(part, flds));
@@ -29,21 +20,10 @@ const moveParticles = flds => particles =>
 const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
   parts.filter(particle => Particle.isInBound(boundary, particle));
 
-const limitNumberOfParticles = n => part => part.slice(0, n);
-const linmitTO1000 = part => limitNumberOfParticles(1000)(part);
-
 // Loop
 const requestFrame = cont => dspl => flds => emttrs => prtcls =>
   // eslint-disable-next-line no-use-before-define
   cont && requestAnimationFrame(() => loop(cont, dspl, flds, emttrs, prtcls));
-
-const redrawElements = fld => emitt => dis => part =>
-  pipe(
-    tap(Display.clearCtx),
-    tap(Display.drawFields(fld)),
-    tap(Display.drawEmitters(emitt)),
-    tap(Display.drawParticles(part)),
-  )(dis);
 
 const randomParticle = () =>
   Particle({
@@ -55,6 +35,20 @@ const randomParticle = () =>
     ],
     size: Math.round(Math.random() * 5) + 1,
   });
+
+// Extras
+// --------------------------------------------------------------
+// TEST : grow particles
+const incrementSize = part => ({ ...part, size: part.size + 1 });
+const particleGrow = arr =>
+  arr.reduce((acc, cur) => [...acc, incrementSize(cur)], []);
+
+const addParticles = n => arr => [...arr, ...times(Particle, n)];
+
+const limitNumberOfParticles = n => part => part.slice(0, n);
+const linmitTO1000 = part => limitNumberOfParticles(1000)(part);
+
+// ---------------------------------------------------------------
 
 // Particles
 export const addNewParticlesToEmitters = emttrs => particles => {
@@ -79,13 +73,17 @@ export const addNewParticlesToEmitters = emttrs => particles => {
   ];
 };
 
-// TEST : grow particles
+// -----------------------
+// MAIN APPLICATION (LOOP)
+// -----------------------
 
-const incrementSize = part => ({ ...part, size: part.size + 1 });
-const particleGrow = arr =>
-  arr.reduce((acc, cur) => [...acc, incrementSize(cur)], []);
-
-const addParticles = n => arr => [...arr, ...times(Particle, n)];
+const redrawElements = fld => emitt => dis => part =>
+  pipe(
+    tap(Display.clearCtx),
+    tap(Display.drawFields(fld)),
+    tap(Display.drawEmitters(emitt)),
+    tap(Display.drawParticles(part)),
+  )(dis);
 
 const loop = (cont, dspl, flds, emttrs, particles = []) => {
   pipe(
@@ -95,7 +93,7 @@ const loop = (cont, dspl, flds, emttrs, particles = []) => {
     moveParticles(fields),
     // particleGrow,
     removeUnboundParticles(Display.boundary(disp)),
-    // linmitTO1000
+    linmitTO1000,
     tap(redrawElements(fields)(emitters)(disp)),
     tap(requestFrame(cont - 1)(disp)(fields)(emitters)),
   )(particles);

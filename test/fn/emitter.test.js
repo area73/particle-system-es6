@@ -24,10 +24,4 @@ describe('λ :: Test emitter', () => {
       color: [[0, 217, 255, 0], [255, 255, 255, 0.439]],
     });
   });
-
-  test('get new  particles from an emitter with an emission rate of 6', () => {
-    const emit = emitter({ frequency: 6 });
-    const particles = emitter.addParticles(emit);
-    expect(particles.length).toBe(6);
-  });
 });

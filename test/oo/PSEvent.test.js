@@ -1,5 +1,4 @@
-import {PSEvent} from '../../src/oo/PSEvent.js';
-
+import { PSEvent } from '../../src/oo/PSEvent.js';
 
 describe('OO :: PSEvent', () => {
   test('It should be a singleton const object ', () => {
