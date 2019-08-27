@@ -66,5 +66,4 @@ export default class Display {
   _clear() {
     this.context.clearRect(0, 0, this.width, this.height);
   }
-
 }

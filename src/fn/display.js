@@ -51,3 +51,13 @@ Display.clearCtx = disp =>
   );
 
 Display.clone = disp => ({ ...disp });
+
+Display.drawFields = flds => dspl =>
+  flds.forEach(fld => Display.circleGradientDraw(dspl, fld));
+
+Display.drawEmitters = emttrs => dspl =>
+  emttrs.forEach(emttr => Display.circleGradientDraw(dspl, emttr));
+
+Display.drawParticles = (particles = []) => dspl =>
+  // particles.forEach(prtcl => Display.squaredDraw({ disp: dspl, obj: prtcl }));
+  particles.forEach(prtcl => Display.circleDraw({ disp: dspl, obj: prtcl }));

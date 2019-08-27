@@ -8,6 +8,7 @@ const emitters = [
     velocity: Vector(1, 0),
     spread: Math.PI / 2,
   }),
+  // TODO:: referential transparency above
   emitter({
     position: Vector(800, 200),
     velocity: Vector(-2, 0),
