@@ -63,8 +63,8 @@ export const addNewParticlesToEmitters = emttrs => particles => {
       (acc, cur) => [
         ...acc,
         /* [3] */ ...times(
-          () =>
-            Particle.attachToEmitter(cur, randomParticle() /* [1] */) /* [2] */,
+          () => Particle.attachToEmitter(cur, Particle() /* [1] */) /* [2] */,
+          // Particle.attachToEmitter(cur, randomParticle() /* [1] */) /* [2] */,
           cur.frequency,
         ),
       ],
@@ -93,7 +93,7 @@ const loop = (cont, dspl, flds, emttrs, particles = []) => {
     moveParticles(fields),
     // particleGrow,
     removeUnboundParticles(Display.boundary(disp)),
-    linmitTO1000,
+    // linmitTO1000,
     tap(redrawElements(fields)(emitters)(disp)),
     tap(requestFrame(cont - 1)(disp)(fields)(emitters)),
   )(particles);
