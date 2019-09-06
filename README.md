@@ -5,28 +5,9 @@
 
 # Particle System:  ES6 Object Oriented Vs Functional Paradigm
 
-This is a particle system, with no dependencies pure vanilla Javascript.
+There are two source sone for Object Orientes and the other one for functional programing bouth durces do the same.
+This repo is intented to see the difernece  on mind change from adopting a object orientes aproach and switching to functional programming
 
-There are right now 3 branches:
-
-  `version-0` is an Object Oriented ES6 classes & modules version. It is the minimum version 
-   to work with .
-    
-  `version-0-functional` , same version but without classes and in a functional approach, not 
-   optimised
-    
-  `version-1-functional`, more functional development this is the only branch that has a 
-   dependence to  Ramda (a functional library), you can expect to find here free point 
-   programming,
-   currying, etc.  
-   
-   `talk/final`, `talk/stage-*` , functional and Object Oriented step by step for a talk 
-   @functionalJS group 
-
-<!-- 
-[![Build Status](https://travis-ci.org/Polymer/polymer-starter-kit.svg?branch=master)]
-(https://travis-ci.org/Polymer/polymer-starter-kit)
--->
 
 ## Index
 * [Features](#features)
@@ -77,7 +58,7 @@ All the imports are made with ES6 modules
 <pre>
 /root --> config files
   /assets --> images and static content
-  /src --> this is were the code is located (functional , OO and Ramda library)
+  /src --> this is were the code is located (fn -> functional , OO -> object orientes )
   /test --> testing files
 </pre>
 
