@@ -83,8 +83,11 @@ to execute index.html from file directory won't work since ES6 modules are sandb
  
  Then you can visit:
  `
+ 
   index-oo.html (Object Oriented)
+  
   index-fn.html (functional)
+  
  `
 
 ## <a name="Running-the-tests">Running the tests</a>
