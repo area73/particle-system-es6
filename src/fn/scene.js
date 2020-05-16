@@ -3,6 +3,8 @@ import { Particle } from './particle.js';
 import { Data } from './data/data5.js';
 import { tap, pipe, times } from './fnUtils.js';
 
+// INITIAL DATA (Display, emitters, fields)
+// ---------------------------------------
 // Display
 const canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
@@ -12,6 +14,8 @@ const disp = Display(canvas);
 // Emitters, fields
 const { emitters, fields } = Data;
 
+// FUNCTIONS
+// ---------------------------------------
 // move
 const moveParticles = flds => particles =>
   particles.map(part => Particle.move(part, flds));
@@ -19,11 +23,6 @@ const moveParticles = flds => particles =>
 // Clean
 const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
   parts.filter(particle => Particle.isInBound(boundary, particle));
-
-// Loop
-const requestFrame = cont => dspl => flds => emttrs => prtcls =>
-  // eslint-disable-next-line no-use-before-define
-  cont && requestAnimationFrame(() => loop(cont, dspl, flds, emttrs, prtcls));
 
 const randomParticle = () =>
   Particle({
@@ -50,6 +49,13 @@ const linmitTO1000 = part => limitNumberOfParticles(1000)(part);
 
 // ---------------------------------------------------------------
 
+// MAIN PIPE
+// ----------------------------------------
+// Loop
+const requestFrame = cont => dspl => flds => emttrs => prtcls =>
+  // eslint-disable-next-line no-use-before-define
+  cont && requestAnimationFrame(() => loop(cont, dspl, flds, emttrs, prtcls));
+
 // Particles
 export const addNewParticlesToEmitters = emttrs => particles => {
   // [1] crear una particula random
@@ -63,8 +69,9 @@ export const addNewParticlesToEmitters = emttrs => particles => {
       (acc, cur) => [
         ...acc,
         /* [3] */ ...times(
-          () => Particle.attachToEmitter(cur, Particle() /* [1] */) /* [2] */,
-          // Particle.attachToEmitter(cur, randomParticle() /* [1] */) /* [2] */,
+          () =>
+            Particle.attachToEmitter(cur, randomParticle() /* [1] */) /* [2] */,
+          // () => Particle.attachToEmitter(cur, randomParticle() /* [1] */) /* [2] */,
           cur.frequency,
         ),
       ],
