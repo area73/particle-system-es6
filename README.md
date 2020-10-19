@@ -2,9 +2,6 @@
 
 > ## 🛠 Status: On active development
 
-
-[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=for-the-badge&logo=github)](https://wallabyjs.com/oss/)
-
 # Particle System:  ES6 Object Oriented Vs Functional Paradigm
 
 There are two sources, one for Object Oriented and the other one for functional programing both 
