@@ -3,10 +3,15 @@
 > ## 🛠 Status: On active development
 
 
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=for-the-badge&logo=github)](https://wallabyjs.com/oss/)
+
 # Particle System:  ES6 Object Oriented Vs Functional Paradigm
 
-There are two source sone for Object Orientes and the other one for functional programing bouth durces do the same.
-This repo is intented to see the difernece  on mind change from adopting a object orientes aproach and switching to functional programming
+There are two sources, one for Object Oriented and the other one for functional programing both 
+sources do the same.
+
+This repo has been made to see the differences on mind change from adopting an object oriented 
+approach and switching to functional programming
 
 
 ## Index
@@ -22,6 +27,7 @@ This repo is intented to see the difernece  on mind change from adopting a objec
 * [Built With](#Built-With)
 * [Authors](#Authors)
 * [License](#License)
+* [Wallaby.js](#wallaby)
 * [Bibliography / Acknowledgments](#Acknowledgments)
 
 <hr>
@@ -32,12 +38,12 @@ This is a very simple particle system with 3 actors.
 
 **Particle:** the _main object of this system that will be affected by forces.
 
-**Emmisor:** Entity that will spell particles at different speed and angle
+**Emitter:** Entity that will spell particles at different speed and angle
 
-**Filed:** A gravity field. This gravity can be positive (it will attract particles), or negative
+**Field:** A gravity field. This gravity can be positive (it will attract particles), or negative
  (it will repel particles)
  
-There are other peaces to consider , the particle system itself were we set our scenario and a 
+There are other peaces to consider like the particle system itself were we set our scenario and a 
 display system 
 
 ### <a name="patterns">Design Patterns</a>
@@ -51,7 +57,7 @@ There is no need for a build or any package installation :scream_cat:
 
 Just run the index.html on a modern browser and that's it.
 
-All the imports are made with ES6 modules
+All the imports has been made with ES6 modules
 
 
 ### <a name="code-scaffolding">Code scaffolding</a>
@@ -64,7 +70,7 @@ All the imports are made with ES6 modules
 
 ### <a name="Prerequisites">Prerequisites</a>
 As I said before there is no need ot install any dependencies although this project has a package
-.json to manage dev dependencies. This dev dependencies are related to eslint and prettier (tools
+.json to manage dev dependencies. This dev dependencies are relate to eslint and prettier (tools
  for code linting and good practices)  
 
 ### <a name="installation">Installation</a>
@@ -111,8 +117,16 @@ https://software.intel.com/en-us/html5/hub/blogs/build-a-javascript-particle-sys
 
 https://github.com/jsoverson/JavaScript-Particle-System
 
-[A functional canvas approach with redux](https://medium
-.com/@peterxjang/a-functional-canvas-approach-with-redux-ce59a369241b)
+[A functional canvas approach with redux](https://medium.com/@peterxjang/a-functional-canvas-approach-with-redux-ce59a369241b)
 
 https://www.oddlyfunctional.com/making-a-game-with-functional-programming-part-1
 
+
+## <a name="wallaby">Wallaby.js</a>
+
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=for-the-badge&logo=github)](https://wallabyjs.com/oss/)
+
+This repository contributors are welcome to use
+[Wallaby.js OSS License](https://wallabyjs.com/oss/) to get
+test results immediately as you type, and see the results in
+your editor right next to your code.
