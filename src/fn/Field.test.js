@@ -1,4 +1,4 @@
-import { Field } from '../../src/fn/Field.js';
+import { Field } from './Field.js';
 
 describe('λ :: Test Field', () => {
   test('get a field', () => {
@@ -7,7 +7,10 @@ describe('λ :: Test Field', () => {
       position: { x: 0, y: 0 },
       size: 450,
       mass: -450,
-      color: [[127, 183, 255, 0.039], [19, 255, 5, 0.376]],
+      color: [
+        [127, 183, 255, 0.039],
+        [19, 255, 5, 0.376],
+      ],
     });
   });
 
@@ -17,7 +20,10 @@ describe('λ :: Test Field', () => {
       position: { x: 0, y: 0 },
       size: 50,
       mass: -450,
-      color: [[127, 183, 255, 0.039], [19, 255, 5, 0.376]],
+      color: [
+        [127, 183, 255, 0.039],
+        [19, 255, 5, 0.376],
+      ],
     });
   });
 });
