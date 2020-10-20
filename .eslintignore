@@ -1,1 +1,7 @@
-lib
+coverage/*
+lib/*
+# dotfiles are ignored by default
+scripts/
+.templates/
+*.svg
+*.d.ts

@@ -1,7 +1,7 @@
-import { Vector } from '../../src/fn/Vector';
-import { Particle } from '../../src/fn/particle.js';
-import { Field } from '../../src/fn/Field.js';
-import { emitter } from '../../src/fn/emitter.js';
+import { Vector } from './Vector';
+import { Particle } from './particle';
+import { Field } from './Field';
+import { emitter } from './emitter';
 
 describe('λ :: Test Particle', () => {
   test('get a particle', () => {

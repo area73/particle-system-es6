@@ -1,5 +1,4 @@
-// https://jestjs.io/docs/en/configuration.html
-
+// eslint-disable-next-line functional/immutable-data
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -26,11 +25,10 @@ module.exports = {
   // coverageDirectory: null,
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: ['/node_modules/', '/src/config/'],
 
   // A list of reporter names that Jest uses when writing coverage reports
+  coverageReporters: ['json'],
   // coverageReporters: [
   //   "json",
   //   "text",
@@ -60,19 +58,19 @@ module.exports = {
   // globals: {},
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ['node_modules'],
+  moduleDirectories: ['node_modules', 'src'],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: [
-    'js',
-    /*
+  // moduleFileExtensions: [
+  /*  'js',
     "json",
     "jsx",
     "ts",
     "tsx",
     "node"
     */
-  ],
+  // ],
+  moduleFileExtensions: ['ts', 'js', 'jsx', 'json', 'node'],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -108,7 +106,7 @@ module.exports = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: './src/',
+  roots: ['<rootDir>/src'],
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -129,6 +127,7 @@ module.exports = {
 
   // The test environment that will be used for testing
   // testEnvironment: "jest-environment-jsdom",
+  testEnvironment: 'jest-environment-jsdom-global',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -149,6 +148,7 @@ module.exports = {
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)?$',
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: null,
@@ -158,13 +158,19 @@ module.exports = {
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
   // testURL: "http://localhost",
+  testURL: 'http://localhost',
 
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
   // transform: null,
-  transform: { '^.+\\.js$': 'babel-jest' },
+  // transform: { '^.+\\.ts?$': 'ts-jest' },
+  transform: {
+    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.js?$': 'babel-jest',
+  },
+
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/"

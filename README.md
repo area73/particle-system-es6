@@ -4,12 +4,11 @@
 
 # Particle System:  ES6 Object Oriented Vs Functional Paradigm
 
-There are two sources, one for Object Oriented and the other one for functional programing both 
-sources do the same.
+Let's get serious, now we are moving towards something more complex but powerful. 
 
-This repo has been made to see the differences on mind change from adopting an object oriented 
-approach and switching to functional programming
+We are moving to **ADT ( Algebraic Data Types)**, and we are also adding **Type Script** for type safetying.
 
+To do so we will use the wonderful library [FP-TS](https://github.com/gcanti/fp-ts)
 
 ## Index
 * [Features](#features)

@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "UMD",
+    "lib": ["ES2020","DOM"],
+    "target": "ES2020",
+    "noEmit": false,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "removeComments": false,
+    "moduleResolution": "Node",
+    "strict": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": false
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}
+
