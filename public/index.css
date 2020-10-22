@@ -1,14 +1,28 @@
-#img {
-  display: block;
-  margin: auto;
-  height: 128px;
-  width: 128px;
-  padding: 2rem;
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', serif;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* padding: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 48px;
+  background-color: hsla(285, 30%, 28%, 0.83);
+  color: hsla(285, 91%, 83%, 1.87);
+  text-align: center;
 }
 
 #canvas {
-  display: block;
-  margin: 2rem auto;
-  width: 540px;
-  height: 540px;
+  width: 100%;
+  height: 100%;
 }

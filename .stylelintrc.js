@@ -464,7 +464,7 @@ module.exports = {
     'selector-attribute-operator-space-after': 'never',
     'selector-attribute-operator-space-before': 'never',
     'selector-max-compound-selectors': 4,
-    'selector-max-id': 0,
+    'selector-max-id': 1,
     'selector-no-vendor-prefix': true,
     'selector-pseudo-class-no-unknown': true,
     'selector-pseudo-class-parentheses-space-inside': 'never',
