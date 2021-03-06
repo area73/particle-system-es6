@@ -6,6 +6,7 @@
 
 import type { Monoid } from 'fp-ts/Monoid';
 import { getStructMonoid } from 'fp-ts/Monoid';
+import * as RA from 'fp-ts/ReadonlyArray';
 
 const loop = (count: number, ps: ParticleSystem) => {
   ps(count);
@@ -50,6 +51,94 @@ const monoidVector: Monoid<Vector> = getStructMonoid({
   to: monoidPoint,
 });
 
+type ColorRGBA = readonly [number, number, number, number];
+
+// TODO creo que podríamos crear un único objeto de forma que :
+/*
+
+type Particle = {
+  readonly position: Point;
+  readonly color: ColorRGBA;
+  readonly size: number;
+  readonly mass: number;
+}
+
+ */
+
+type Emitter = {
+  readonly position: Point;
+  readonly velocity: Vector; // TODO no tendría por qué tener velocidad podría ser masa
+  readonly size: number;
+  readonly spread: number; // TODO esto creo que tampoco debería de ir aquí ???
+  readonly frequency: number;
+};
+
+type Particle = {
+  readonly position: Point;
+  readonly velocity: Vector; // TODO creo que esto tampoco debería de estar aquí
+  readonly acceleration: Vector; // TODO creo que esto tampoco debería de estar aquí
+  readonly color: ColorRGBA;
+  readonly size: number;
+};
+
+type Field = {
+  readonly position: Point;
+  readonly size: number;
+  readonly mass: number;
+  readonly color: ReadonlyArray<readonly [ColorRGBA, ColorRGBA]>;
+};
+
 // ----------------------------------------------------------------------------------------------
+
+// Tenemos estos 3 elementos y la forma de trabajar será:
+/*
+
+ESTRUCTURAS
+-----------
+1/ tenemos un array de particulas
+2/ un array de emisores
+3/ un array de campos
+
+OPERACIONES
+----------
+1/ creamos partículas desde un emisor con una serie de condiciones
+2/ aplicamos fuerzas gravitatorias a las partículas
+3/ transformamos la partícula
+
+*/
+
+// como tenemos que crear estrcuturas de listas vamos a usar una mónada de listas
+
+const particle1: Particle = {
+  acceleration: { to: { x: 10, y: 10 }, from: { x: 10, y: 10 } },
+  color: [255, 126, 12, 1],
+  position: { x: 10, y: 20 },
+  size: 2,
+  velocity: { to: { x: 10, y: 10 }, from: { x: 10, y: 10 } },
+};
+
+const particle2: Particle = {
+  acceleration: { to: { x: 10, y: 10 }, from: { x: 10, y: 10 } },
+  color: [255, 126, 12, 1],
+  position: { x: 10, y: 20 },
+  size: 2,
+  velocity: { to: { x: 10, y: 10 }, from: { x: 10, y: 10 } },
+};
+
+const emitter1: Emitter = {
+  velocity: { to: { x: 10, y: 10 }, from: { x: 10, y: 10 } },
+  position: { x: 10, y: 20 },
+  frequency: 0,
+  size: 0,
+  spread: 0,
+};
+
+// Arrays
+// ------
+// TODO: No se cómo inicializar un Array de partículas vacío por eso paso una primera partícula
+const particlesArray = RA.of(particle1);
+// const a = RA.insertAt(0, particle2)(particlesArray); // ?
+
+const emittersArray = RA.of(emitter1);
 
 requestFrame(1)(console.log);
