@@ -1,4 +1,4 @@
-import EventHandler from '../../src/oo/EventHandler.js';
+import EventHandler from "../../src/oo/EventHandler.js"
 
 describe('OO :: Test EventHandler', () => {
   test('It should not be directly instantiate with new operator', () => {
@@ -12,3 +12,14 @@ describe('OO :: Test EventHandler', () => {
   });
   */
 });
+
+// @ponicode
+describe("EventHandler.default.getInstance", () => {
+    test("0", () => {
+        let callFunction = () => {
+            EventHandler.default.getInstance()
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+})
