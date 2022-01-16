@@ -1,6 +1,6 @@
 import { Display } from './display.js';
 import { Particle } from './particle.js';
-import { Data } from './data/data5.js';
+import { Data } from './data/data.js';
 import { tap, pipe, times } from './fnUtils.js';
 
 // INITIAL DATA (Display, emitters, fields)
@@ -17,12 +17,12 @@ const { emitters, fields } = Data;
 // FUNCTIONS
 // ---------------------------------------
 // move
-const moveParticles = flds => particles =>
-  particles.map(part => Particle.move(part, flds));
+const moveParticles = (flds) => (particles) =>
+  particles.map((part) => Particle.move(part, flds));
 
 // Clean
 const removeUnboundParticles = (boundary = { x, y }) => (parts = []) =>
-  parts.filter(particle => Particle.isInBound(boundary, particle));
+  parts.filter((particle) => Particle.isInBound(boundary, particle));
 
 const randomParticle = () =>
   Particle({
@@ -38,26 +38,26 @@ const randomParticle = () =>
 // Extras
 // --------------------------------------------------------------
 // TEST : grow particles
-const incrementSize = part => ({ ...part, size: part.size + 1 });
-const particleGrow = arr =>
+const incrementSize = (part) => ({ ...part, size: part.size + 1 });
+const particleGrow = (arr) =>
   arr.reduce((acc, cur) => [...acc, incrementSize(cur)], []);
 
-const addParticles = n => arr => [...arr, ...times(Particle, n)];
+const addParticles = (n) => (arr) => [...arr, ...times(Particle, n)];
 
-const limitNumberOfParticles = n => part => part.slice(0, n);
-const linmitTO1000 = part => limitNumberOfParticles(1000)(part);
+const limitNumberOfParticles = (n) => (part) => part.slice(0, n);
+const linmitTO1000 = (part) => limitNumberOfParticles(1000)(part);
 
 // ---------------------------------------------------------------
 
 // MAIN PIPE
 // ----------------------------------------
 // Loop
-const requestFrame = cont => dspl => flds => emttrs => prtcls =>
+const requestFrame = (cont) => (dspl) => (flds) => (emttrs) => (prtcls) =>
   // eslint-disable-next-line no-use-before-define
   cont && requestAnimationFrame(() => loop(cont, dspl, flds, emttrs, prtcls));
 
 // Particles
-export const addNewParticlesToEmitters = emttrs => particles => {
+export const addNewParticlesToEmitters = (emttrs) => (particles) => {
   // [1] crear una particula random
   // [2] añadirla al emisor (override de sus propiedades, posición, velocidad, etc)
   // [3] repetirlo según frecuencia del emisor
@@ -84,7 +84,7 @@ export const addNewParticlesToEmitters = emttrs => particles => {
 // MAIN APPLICATION (LOOP)
 // -----------------------
 
-const redrawElements = fld => emitt => dis => part =>
+const redrawElements = (fld) => (emitt) => (dis) => (part) =>
   pipe(
     tap(Display.clearCtx),
     tap(Display.drawFields(fld)),
