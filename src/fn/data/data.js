@@ -15,8 +15,8 @@ const emitters = [
   }),
 ];
 const fields = [
-  Field({ position: Vector(300, 200), mass: -50 }),
-  Field({ position: Vector(100, 200), mass: -100 }),
+  Field({ position: Vector(400, 200), mass: -50 }),
+  Field({ position: Vector(350, 500), mass: -100 }),
 ];
 
 export const Data = {

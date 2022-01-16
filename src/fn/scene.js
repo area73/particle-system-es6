@@ -1,6 +1,6 @@
 import { Display } from './display.js';
 import { Particle } from './particle.js';
-import { Data } from './data/data5.js';
+import { Data } from './data/data.js';
 import { tap, pipe, times } from './fnUtils.js';
 
 // INITIAL DATA (Display, emitters, fields)

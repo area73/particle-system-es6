@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Particle system</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        --alpha: 0.5;
+      }
+
+      a {
+        color: aliceblue;
+      }
+
+      a:hover {
+        --alpha: 1;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #222;
+        color: aliceblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+        width: fit-content;
+      }
+      .card__title {
+        grid-column: 1 / -1;
+        font-size: 2em;
+        line-height: 2em;
+      }
+      .card__oo {
+        background-color: rgba(227, 2, 2, var(--alpha));
+        width: 100%;
+        padding: 1em;
+      }
+      .card__fn {
+        background-color: rgba(0, 164, 0, var(--alpha));
+        margin-left: 2px;
+        width: 100%;
+        padding: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card__title">Particle system experiment</div>
+      <a class="card__oo" href="index-oo.html">Object Oriented</a>
+      <a class="card__fn" href="index-fn.html">Functional</a>
+    </div>
+  </body>
+</html>
